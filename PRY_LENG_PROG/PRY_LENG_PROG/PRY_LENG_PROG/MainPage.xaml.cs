@@ -14,5 +14,11 @@ namespace PRY_LENG_PROG
         {
             InitializeComponent();
         }
+
+        private void boton_Prueba_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Page1());
+
+        }
     }
 }
