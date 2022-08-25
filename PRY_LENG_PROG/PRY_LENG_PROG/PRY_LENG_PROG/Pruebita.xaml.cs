@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace PRY_LENG_PROG
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class Pruebita : ContentPage
     {
-        public Page1()
+        public Pruebita()
         {
             InitializeComponent();
-        }
-
-        private void pruebita_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new Pruebita());
         }
     }
 }
