@@ -16,11 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Page1.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pruebita.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <Folder Include="Mascotas\" />
+    <Folder Include="SugerenciasComentarios\" />
+    <Folder Include="ReservaEstablecimiento\" />
+    <Folder Include="ReservasCitas\" />
   </ItemGroup>
 </Project>

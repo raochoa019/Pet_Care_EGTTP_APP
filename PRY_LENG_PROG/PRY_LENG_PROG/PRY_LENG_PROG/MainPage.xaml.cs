@@ -13,11 +13,18 @@ namespace PRY_LENG_PROG
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
+
         }
 
-        private void boton_Prueba_Clicked(object sender, EventArgs e)
+        private void BtnEntrar_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Page1());
+
+        }
+
+        private void btnExit_Clicked(object sender, EventArgs e)
+        {
 
         }
     }
