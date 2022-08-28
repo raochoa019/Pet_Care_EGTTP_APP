@@ -33,45 +33,64 @@
             <StackLayout Grid.Row="1" Margin="0,15,0,0">
                 <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Margin="20,0" Color="red"/>
             </StackLayout>
-            <StackLayout Grid.Row="2" BackgroundColor="White">
-                <CarouselView x:Name="crsOpcionesUsuario" PeekAreaInsets="10" BackgroundColor="White" HeightRequest="150" IsScrollAnimated="True" >
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <ImageButton Source="{Binding referencia}" x:Name="accionButton" BackgroundColor="White" HeightRequest="160"/>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-            </StackLayout>
-            
-            <ScrollView Grid.Row="3" HorizontalOptions="FillAndExpand">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
 
-                    <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="Red">
-                        <ImageButton Source="citaMedica.png" WidthRequest="80" Grid.Column="0"/>
-                        <ImageButton Source="mascota.png" WidthRequest="80" Grid.Column="1"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="1">
+            <ScrollView Grid.Row="2" >
 
-                        <StackLayout Grid.Column="0">
-                            <ImageButton/>
+                <StackLayout BackgroundColor="White">
+                    <CarouselView x:Name="crsOpcionesUsuario" PeekAreaInsets="10" BackgroundColor="White" HeightRequest="150" IsScrollAnimated="True" >
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <ImageButton Source="{Binding referencia}" x:Name="accionButton" BackgroundColor="White" HeightRequest="160"/>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
 
+                    <Grid HorizontalOptions="CenterAndExpand" Margin="0,25,0,0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Spacing="50" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <StackLayout>
+                                <ImageButton x:Name="cita" Clicked="cita_Clicked" BackgroundColor="White" Source="citaMedica.png" WidthRequest="150"/>
+                                <Label Text="Citas Médicas" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <ImageButton BackgroundColor="White" x:Name="mascota" Clicked="mascota_Clicked" Source="mascota.png" WidthRequest="150"/>
+                                <Label Text="Mis Mascotas" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>
+                            </StackLayout>
                         </StackLayout>
-                        <StackLayout Grid.Column="1">
-                            <ImageButton/>
-
+                        
+                        <StackLayout Grid.Row="1" Spacing="50" Margin="0,30,0,0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <StackLayout>
+                                <ImageButton x:Name="estadia" Clicked="estadia_Clicked" BackgroundColor="White" Source="estadia.png" WidthRequest="150"/>
+                                <Label Text="Estadia" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <ImageButton x:Name="sugerencia" BackgroundColor="White" Source="sugerencias.png" Clicked="sugerencia_Clicked" WidthRequest="150"/>
+                                <Label Text="Sugerencias" Margin="10,0,0,0" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>
+                                <Label Text="y Comentarios" Margin="10,0,0,0" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>                                
+                            </StackLayout>
                         </StackLayout>
+                    </Grid>
+                </StackLayout>
 
-                    </StackLayout>
-                </Grid>
+
             </ScrollView>
+            
+
+
+<!--            <ScrollView Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                               
+                
+
+            </ScrollView>-->
         </Grid>
         
     </ContentPage.Content>
