@@ -18,11 +18,31 @@
   <ItemGroup>
     <Folder Include="Mascotas\" />
     <Folder Include="ReservaEstablecimiento\" />
-    <Folder Include="ReservasCitas\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ReservasCitas\PetReservation.xaml.cs">
+      <DependentUpon>PetReservation.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="components\Header.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="components\NewPet.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="components\Pet.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="components\PetDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Menu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ReservasCitas\PetReservation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SugerenciasComentarios\Comentarios.xaml">

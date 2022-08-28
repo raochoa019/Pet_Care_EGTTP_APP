@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRY_LENG_PROG.components.NewPet">
+  <ContentView.Content>
+        <Grid  Padding="20, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="0" HorizontalOptions="Start">
+                <Label
+                    TextColor="Black"
+                    FontAttributes="Bold" 
+                    FontSize="Title" 
+                    Text="Mis mascotas">
+                </Label>
+            </StackLayout>
+            <StackLayout Grid.Column="1" HorizontalOptions="End">
+                <Label
+                    TextColor="Black"
+                    FontAttributes="Bold" 
+                    FontSize="Title" 
+                    Text="+">
+                </Label>
+            </StackLayout>
+        </Grid>
+  </ContentView.Content>
+</ContentView>
