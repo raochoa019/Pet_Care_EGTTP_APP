@@ -1,0 +1,39 @@
+﻿using PRY_LENG_PROG.Modelos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace PRY_LENG_PROG
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Menu : ContentPage
+    {
+        public Menu()
+        {
+            InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
+
+            List<Carrusel> images = new List<Carrusel>();
+            images.Add(new Carrusel() { referencia = "https://www.centroveterinariobarbanza.es/cuidados-para-cachorros_img8860t1.jpg" });
+            images.Add(new Carrusel() { referencia = "https://hvc.cat/wp-content/uploads/2020/12/3-infecciones-en-perros-y-que-hacer-en-cada-caso.jpg" });
+            images.Add(new Carrusel() { referencia = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREBGhuF-y6ctphzDQ9rvNF79CYYBB-_pl3U-KCsamCNZ5qrmNsNQD3x0WhdQRYK9cDGbE&usqp=CAU" });
+            images.Add(new Carrusel() { referencia = "https://static3.elcorreo.com/www/multimedia/202201/14/media/cortadas/perreteweb-kva-U1605387236324pF-624x385@RC.jpg" });
+            images.Add(new Carrusel() { referencia = "https://www.prensalibre.com/wp-content/uploads/2019/06/mascotas-preguntas-veterinario-perros-gatos-4.jpg?quality=52&w=760&h=430&crop=1" });
+
+            crsOpcionesUsuario.ItemsSource = images;
+
+            Device.StartTimer(TimeSpan.FromSeconds(4), (Func<bool>)(() =>
+            {
+                crsOpcionesUsuario.Position = (crsOpcionesUsuario.Position + 1) % images.Count;
+                return true;
+            }));
+        }
+        
+    }
+}

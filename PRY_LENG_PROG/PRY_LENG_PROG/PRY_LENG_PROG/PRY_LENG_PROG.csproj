@@ -17,8 +17,16 @@
 
   <ItemGroup>
     <Folder Include="Mascotas\" />
-    <Folder Include="SugerenciasComentarios\" />
     <Folder Include="ReservaEstablecimiento\" />
     <Folder Include="ReservasCitas\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Menu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SugerenciasComentarios\Comentarios.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
