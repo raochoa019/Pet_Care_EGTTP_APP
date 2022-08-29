@@ -10,18 +10,26 @@ using PRY_LENG_PROG.ReservasCitas;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PRY_LENG_PROG.ReservaEstablecimiento;
 
 namespace PRY_LENG_PROG
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Menu : ContentPage
     {
-        public Menu()
+        UserModel userAccount = new UserModel();
+        public Menu(UserModel usuario)
         {
+            this.userAccount = usuario;
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjU2MDY2QDMyMzAyZTMxMmUzMG9DL1A0cUFxU0kyd1BuZVNvRFpLNDFjditvdGU1ZUMwOXpKODhMazhCQzQ9");
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
+
+            Application.Current.Properties["direccionDb"] = "http://127.0.0.1:8000";
+            Application.Current.Properties["idUsuario"] = userAccount.id;
+            Application.Current.Properties["nameUser"] = userAccount.name;
+
 
             List<Carrusel> images = new List<Carrusel>();
             images.Add(new Carrusel() { referencia = "https://www.centroveterinariobarbanza.es/cuidados-para-cachorros_img8860t1.jpg" });
@@ -46,12 +54,7 @@ namespace PRY_LENG_PROG
 
         private void mascota_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new frmPets(2));
-        }
-
-        private void estadia_Clicked(object sender, EventArgs e)
-        {
-
+            Navigation.PushAsync(new frmPets(userAccount.id));
         }
 
         private void sugerencia_Clicked(object sender, EventArgs e)

@@ -66,12 +66,8 @@
                                 <Label Text="Mis Mascotas" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>
                             </StackLayout>
                         </StackLayout>
-                        
+
                         <StackLayout Grid.Row="1" Spacing="50" Margin="0,30,0,0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <StackLayout>
-                                <ImageButton x:Name="estadia" Clicked="estadia_Clicked" BackgroundColor="White" Source="estadia.png" WidthRequest="150"/>
-                                <Label Text="Estadia" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>
-                            </StackLayout>
                             <StackLayout>
                                 <ImageButton x:Name="sugerencia" BackgroundColor="White" Source="sugerencias.png" Clicked="sugerencia_Clicked" WidthRequest="150"/>
                                 <Label Text="Sugerencias" Margin="10,0,0,0" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>

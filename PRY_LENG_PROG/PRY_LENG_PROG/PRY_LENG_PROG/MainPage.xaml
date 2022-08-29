@@ -29,14 +29,14 @@
 
                 <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="3" Padding="30, 20" >
 
-                    <Entry x:Name="txtUsuario" Placeholder="Usuario" PlaceholderColor="Gray" />
+                    <Entry x:Name="correo" Placeholder="Correo" PlaceholderColor="Gray" />
 
                     <Grid  
                         HeightRequest="45"
     
                         HorizontalOptions="FillAndExpand"
                         IsClippedToBounds="True">
-                        <Entry IsPassword="True"  x:Name="txtClave"  Placeholder="Contraseña" PlaceholderColor="Gray"  Keyboard="Plain"
+                        <Entry IsPassword="True"  x:Name="password"  Placeholder="Contraseña" PlaceholderColor="Gray"  Keyboard="Plain"
                                />
                         <Grid
                             Grid.Row="0"

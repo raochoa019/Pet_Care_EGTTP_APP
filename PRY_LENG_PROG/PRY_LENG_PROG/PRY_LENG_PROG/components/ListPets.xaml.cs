@@ -43,7 +43,7 @@ namespace PRY_LENG_PROG.components
             {
                 String defaultImage = "perro.jpg";
                 if (pet.species.Equals("Gato")) {
-                    defaultImage = "gato.png";
+                    defaultImage = "gato.jpg";
                 } 
 
                 PanelPets.Children.Add(new Pet(pet.id, pet.name, defaultImage));
