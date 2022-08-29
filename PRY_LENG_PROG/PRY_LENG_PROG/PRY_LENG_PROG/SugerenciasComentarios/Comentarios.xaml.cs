@@ -16,6 +16,9 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
     public partial class Comentarios : ContentPage
     {
         List<DatosConsultaComentarios> ListComentarios = new List<DatosConsultaComentarios>();
+        
+
+
         public Comentarios()
         {
             InitializeComponent();
@@ -44,7 +47,7 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
             Device.BeginInvokeOnMainThread(() =>
             {
                 ListComentarios = JsonConvert.DeserializeObject<List<DatosConsultaComentarios>>(strJason);
-                if(ListComentarios != null)
+                if (ListComentarios != null)
                 {
                     foreach (var i in ListComentarios)
                     {
@@ -52,6 +55,7 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
                         int endIndex = i.created_at.Length - 17;
                         i.fecha = i.created_at.Substring(startIndex, endIndex);
                     }
+                    ListComentarios.Reverse();
                     this.listView.ItemsSource = ListComentarios;
                 }
                 this.spinner.IsRunning = false;
@@ -67,9 +71,10 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
         {
  
         }
+
         private void addComments_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("msg", "a", "ok");
+            Navigation.PushAsync(new AddComment());
         }
     }
 }
