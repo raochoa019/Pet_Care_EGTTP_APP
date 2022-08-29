@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PRY_LENG_PROG.SugerenciasComentarios.ModelosComentario
 {
-    internal class DatosConsultaComentarios
+    public class DatosConsultaComentarios
     {
         public int id { get; set; }
         public int id_user { get; set; }
