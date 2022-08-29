@@ -51,6 +51,11 @@ namespace PRY_LENG_PROG
             Navigation.PushAsync(new ReservasCitasPage());
         }
 
+        private void estadia_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PlaceDetails());
+        }
+
         private void mascota_Clicked(object sender, EventArgs e)
         {
 

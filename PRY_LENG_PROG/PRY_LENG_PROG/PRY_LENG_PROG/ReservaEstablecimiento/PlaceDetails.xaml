@@ -29,19 +29,19 @@
                     <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Center">
                         <Label VerticalTextAlignment="Center" Text="Nombre"/>
-                        <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Nombre" x:Name="nombre"/>
+                        <Entry IsReadOnly="True" WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Nombre" x:Name="nombre"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
                         <Label VerticalTextAlignment="Center" Text="Especie"/>
-                        <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Especie" x:Name="especie"/>
+                        <Entry IsReadOnly="True" WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Especie" x:Name="especie"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
                         <Label VerticalTextAlignment="Center" Text="Raza"/>
-                        <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Raza" x:Name="raza"/>
+                        <Entry IsReadOnly="True" WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Raza" x:Name="raza"/>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="CenterAndExpand" Spacing="40" Orientation="Horizontal" Grid.Row="4">

@@ -22,7 +22,7 @@
                 </Grid.RowDefinitions>
 
 
-                <Image Grid.Row="0" Margin="0, 50, 0, 30"  VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="250" Source="Logo.jpg"  />
+                <Image Grid.Row="0" Margin="0, 50, 0, 30"  VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="200" Source="Logo.jpg"  />
 
                 <Label HorizontalTextAlignment="Center" TextTransform="Uppercase" FontAttributes="Bold" Text="Care - Stays" Grid.Row="1" />
                 <Label HorizontalTextAlignment="Center" TextTransform="Uppercase" FontAttributes="Bold" Text="EGTTP" Grid.Row="2" />
