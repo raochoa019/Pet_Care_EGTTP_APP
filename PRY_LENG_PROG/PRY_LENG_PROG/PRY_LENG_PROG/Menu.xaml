@@ -22,8 +22,8 @@
                         <ImageButton BackgroundColor="White" Source="Logo.jpg" WidthRequest="90"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
-                        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="Care - Stays"/>
-                        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="EGTTP" Margin="0,-30,0,0"/>
+                        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="23" Text="Care - Stays"/>
+                        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="23" Text="EGTTP" Margin="0,-25,0,0"/>
                     </StackLayout>
                     <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <ImageButton Source="profile.png" WidthRequest="40"/>
