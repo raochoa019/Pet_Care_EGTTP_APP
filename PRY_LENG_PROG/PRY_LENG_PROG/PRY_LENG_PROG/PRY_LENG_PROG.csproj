@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <Folder Include="Mascotas\" />
-    <Folder Include="ReservaEstablecimiento\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +43,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Menu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ReservaEstablecimiento\DateDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ReservaEstablecimiento\ExtraDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ReservaEstablecimiento\PlaceDetails.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ReservasCitas\PetReservation.xaml">

@@ -9,6 +9,7 @@ using PRY_LENG_PROG.ReservasCitas;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PRY_LENG_PROG.ReservaEstablecimiento;
 
 namespace PRY_LENG_PROG
 {
@@ -44,11 +45,6 @@ namespace PRY_LENG_PROG
         }
 
         private void mascota_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void estadia_Clicked(object sender, EventArgs e)
         {
 
         }
