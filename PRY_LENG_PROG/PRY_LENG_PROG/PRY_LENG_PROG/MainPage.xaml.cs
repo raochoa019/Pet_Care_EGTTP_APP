@@ -32,7 +32,7 @@ namespace PRY_LENG_PROG
             user = JsonConvert.DeserializeObject<List<UserModel>>(strJason);
             if(user != null)
             {
-                if (user.FirstOrDefault().email.Equals(correo.Text))
+                if (user.FirstOrDefault().email == correo.Text)
                 {
                     UserModel usuario = user.FirstOrDefault();
                     Navigation.PushAsync(new Menu(usuario));
