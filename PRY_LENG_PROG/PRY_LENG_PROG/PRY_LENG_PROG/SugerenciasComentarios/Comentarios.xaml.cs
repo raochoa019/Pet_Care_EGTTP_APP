@@ -16,7 +16,7 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
     public partial class Comentarios : ContentPage
     {
         List<DatosConsultaComentarios> ListComentarios = new List<DatosConsultaComentarios>();
-        
+        DatosConsultaComentarios comentarioSeleccionado = new DatosConsultaComentarios();
 
 
         public Comentarios()
@@ -67,14 +67,20 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
             Navigation.PopAsync();
         }
 
-        private void siguiente_Clicked(object sender, EventArgs e)
-        {
- 
-        }
-
         private void addComments_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AddComment());
+        }
+
+        private void listView_SwipeEnded(object sender, Syncfusion.ListView.XForms.SwipeEndedEventArgs e)
+        {
+            DatosConsultaComentarios commentarioSelec = (DatosConsultaComentarios)e.ItemData;
+            comentarioSeleccionado = commentarioSelec;
+        }
+
+        private void eliminar_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("msg", comentarioSeleccionado.name_user, "ok");
         }
     }
 }
