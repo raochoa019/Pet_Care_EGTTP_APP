@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRY_LENG_PROG.ReservasCitas.CreateReservation">
+    <ContentPage.Content>
+        <Grid Padding="20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <StackLayout x:Name="header" Grid.Row="0"></StackLayout>
+
+            <StackLayout Grid.Row="1">
+                <Label 
+                    Text="Reservar Cita" 
+                    TextColor="Black" 
+                    FontAttributes="Bold" 
+                    HorizontalTextAlignment="Center"
+                    FontSize="Title"></Label>
+            </StackLayout>
+
+            <StackLayout x:Name="form" Grid.Row="2" >
+                <Label Text="Mascota"
+                       TextColor="Black"
+                       VerticalTextAlignment="Start"
+                       FontAttributes="Bold"
+                       FontSize="Title">
+                </Label>
+                <Grid x:Name="pet_detail">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="Nombre:"
+                           TextColor="Black"
+                           FontSize="Small"
+                           FontAttributes="Bold"></Label>
+                    
+                    <Label Grid.Row="1" Grid.Column="0"
+                           Text="Especie:"
+                           TextColor="Black"
+                           FontSize="Small"
+                           FontAttributes="Bold"></Label>
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                           Text="Raza:"
+                           TextColor="Black"
+                           FontSize="Small"
+                           FontAttributes="Bold"></Label>
+                </Grid>
+                
+                <Label Text="Veterinario" Padding="0, 20, 0, 0"
+                       TextColor="Black"
+                       VerticalTextAlignment="Start"
+                       FontAttributes="Bold"
+                       FontSize="Title">
+                </Label>
+
+                <Grid x:Name="vet_detail">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="Nombre:"
+                           TextColor="Black"
+                           FontSize="Small"
+                           FontAttributes="Bold"></Label>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                           Text="Email:"
+                           TextColor="Black"
+                           FontSize="Small"
+                           FontAttributes="Bold"></Label>
+                </Grid>
+
+            </StackLayout>
+            
+        </Grid>
+       
+        
+    </ContentPage.Content>
+</ContentPage>
