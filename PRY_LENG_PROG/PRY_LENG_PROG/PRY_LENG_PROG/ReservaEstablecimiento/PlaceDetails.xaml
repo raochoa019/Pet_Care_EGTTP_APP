@@ -24,6 +24,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Center">
@@ -43,13 +44,7 @@
                         <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Raza" x:Name="raza"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand">
-                        <Label VerticalTextAlignment="Center" Text="Edad"/>
-                        <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Edad" x:Name="edad"/>
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="40" Orientation="Horizontal" Grid.Row="5">
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="40" Orientation="Horizontal" Grid.Row="4">
                         <Button Clicked="Return_Clicked"  x:Name="Return" CornerRadius="10" BackgroundColor="#CB1515" Text="Regresar"/>
                         <Button Clicked="Siguiente_Clicked" x:Name="Siguiente" CornerRadius="10" BackgroundColor="#CB1515" Text="Siguiente"/>
                     </StackLayout>

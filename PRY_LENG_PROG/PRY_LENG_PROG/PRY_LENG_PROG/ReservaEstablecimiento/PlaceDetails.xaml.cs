@@ -1,5 +1,6 @@
 ﻿using PRY_LENG_PROG.components;
 using RestSharp;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlaceDetails : ContentPage
     {
-        Dictionary<string, string> detalles;
+        private Dictionary<string, string> detalles;
         public PlaceDetails()
         {
             InitializeComponent();
@@ -33,7 +34,6 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
             modifyInformacion();
             Navigation.PopAsync();
         }
-
         private void PetInfo(string id)
         {
             var petClient = new RestClient("http://10.0.2.2:8000/");
@@ -42,14 +42,19 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = petClient.Execute(request);
             string strJason = queryResult.Content;
-            Console.WriteLine(strJason);
+            /*PetModel pet = JsonConvert.DeserializeObject<PetModel>(strJason);
+            if (pet != null)
+            {
+                nombre.Text = pet.name;
+                especie.Text = pet.species;
+                raza.Text = pet.breed;
+            }*/
         }
         private void modifyInformacion()
         {
             detalles.Add("nombre",nombre.Text);
             detalles.Add("especie",especie.Text);
             detalles.Add("raza",raza.Text);
-            detalles.Add("edad",edad.Text);
         }
     }
 }
