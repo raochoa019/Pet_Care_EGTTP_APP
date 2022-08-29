@@ -127,4 +127,10 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\PRY_LENG_PROG\PRY_LENG_PROG.csproj">
+      <Project>{E4194BBC-432A-465A-B8EF-EB0299BBDEC7}</Project>
+      <Name>PRY_LENG_PROG</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
