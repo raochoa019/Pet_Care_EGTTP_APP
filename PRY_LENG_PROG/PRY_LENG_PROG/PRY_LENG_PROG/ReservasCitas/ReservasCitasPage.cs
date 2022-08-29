@@ -17,7 +17,7 @@ namespace PRY_LENG_PROG.ReservasCitas
                 Children = {
                     new Header(),
                     new NewPet(),
-                    new Pet("Lupita","perro.jpg")
+                    new Pet(2,"Lupita","perro.jpg")
                 }
             };
         }

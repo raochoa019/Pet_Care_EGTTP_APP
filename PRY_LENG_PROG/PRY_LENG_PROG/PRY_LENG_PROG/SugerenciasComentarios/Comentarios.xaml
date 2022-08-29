@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
              x:Class="PRY_LENG_PROG.SugerenciasComentarios.Comentarios">
     <ContentPage.Content>
 
@@ -23,8 +24,8 @@
                         <ImageButton BackgroundColor="White" Source="Logo.jpg" WidthRequest="90"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
-                        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="Care - Stays"/>
-                        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="EGTTP" Margin="0,-30,0,0"/>
+                        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="23" Text="Care - Stays"/>
+                        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="23" Text="EGTTP" Margin="0,-30,0,0"/>
                     </StackLayout>
                     <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <ImageButton Source="profile.png" WidthRequest="40"/>
@@ -35,16 +36,64 @@
                 <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Margin="20,0" Color="red"/>
             </StackLayout>
 
-            <ScrollView Grid.Row="2" >
-                
-                
+            <StackLayout Grid.Row="2">
+                <syncfusion:SfListView x:Name="listView" ItemsSource="{Binding ListComentarios}" ItemSize="200">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#F2F0FB" CornerRadius="10" Margin="10,10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Row="0">
+                                        <Label Text="{Binding title}" FontAttributes="Bold" TextColor="Teal" FontSize="21" />
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1">
+                                        <Grid HeightRequest="50">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <rating:SfRating x:Name="rating" Grid.Column="0" HorizontalOptions="Start" ItemSize="20" Value="{Binding rating}" ReadOnly="True">
+                                                <rating:SfRating.RatingSettings>
+                                                    <rating:SfRatingSettings RatedFill="Red" UnRatedFill="Gray"/>
+                                                </rating:SfRating.RatingSettings>
+                                            </rating:SfRating>
+                                            <StackLayout Grid.Column="1" HorizontalOptions="End">
+                                                <Label x:Name="fechaComentario" Text="{Binding fecha}"/>
+                                                <Label x:Name="name_user" Text="{Binding name_user}"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+
+                                    <ScrollView  Grid.Row="2" HeightRequest="50">
+                                        <Label Grid.Row="1" Text="{Binding comment}" TextColor="Teal" FontSize="Body"/>
+                                    </ScrollView>
+                                </Grid>
+
+                            </Frame>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+
+                </syncfusion:SfListView>
+
+            </StackLayout>
+            
+
+            <ActivityIndicator x:Name="spinner" Color="#E73522" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" Scale="2"/>
 
 
-
-
-            </ScrollView>
-
-            <StackLayout Margin="0,50" Grid.Row="3" Spacing="50" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+            <StackLayout BackgroundColor="Transparent" Margin="0,0,20,0" Grid.Row="2" VerticalOptions="End" HorizontalOptions="End">
+                <Frame BorderColor="Black" IsClippedToBounds="True" CornerRadius="50" HeightRequest="50" WidthRequest="50" >
+                    <ImageButton x:Name="addComments" Source="addComment.png" Clicked="addComments_Clicked" BackgroundColor="White"/>
+                </Frame>
+            </StackLayout>
+            
+            
+            <StackLayout Margin="0,20,0,40" Grid.Row="3" Spacing="50" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
                 <Button x:Name="regresar" Clicked="regresar_Clicked" Text="Regresar" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
                 <Button x:Name="siguiente" Clicked="siguiente_Clicked" Text="Siguiente" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
             </StackLayout>

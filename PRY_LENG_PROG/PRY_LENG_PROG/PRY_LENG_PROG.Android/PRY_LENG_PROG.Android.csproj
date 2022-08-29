@@ -94,12 +94,6 @@
     <AndroidResource Include="Resources\drawable\profile.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PRY_LENG_PROG\PRY_LENG_PROG.csproj">
-      <Project>{E4194BBC-432A-465A-B8EF-EB0299BBDEC7}</Project>
-      <Name>PRY_LENG_PROG</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\Logo.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\sugerencias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\addComment.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

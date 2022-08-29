@@ -13,8 +13,10 @@ namespace PRY_LENG_PROG.components
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Pet : ContentView
     {
-        public Pet(string name, string image)
+        private int id;
+        public Pet(int _id, string name, string image)
         {
+            id = _id;
             InitializeComponent();
             petName.Text = name;
             petImage.Source = image;
@@ -22,7 +24,7 @@ namespace PRY_LENG_PROG.components
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new PetReservation());
+            Navigation.PushAsync(new PetReservation(id));
         }
     }
 }
