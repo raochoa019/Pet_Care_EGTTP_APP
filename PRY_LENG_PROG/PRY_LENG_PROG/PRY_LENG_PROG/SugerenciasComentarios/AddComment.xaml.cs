@@ -1,4 +1,5 @@
-﻿using PRY_LENG_PROG.SugerenciasComentarios.ModelosComentario;
+﻿using Newtonsoft.Json;
+using PRY_LENG_PROG.SugerenciasComentarios.ModelosComentario;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -18,13 +19,45 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
         int user_id = (int)Application.Current.Properties["idUsuario"];
         string name_user = (string)Application.Current.Properties["nameUser"];
 
-        public AddComment()
+        DatosConsultaComentarioById commentxId = new DatosConsultaComentarioById(); 
+        DatosConsultaComentarios comentarioSeleccionado = new DatosConsultaComentarios();
+        int flag;
+
+        public AddComment(DatosConsultaComentarios cmmt, int validar)
         {
+            this.comentarioSeleccionado = cmmt;
+            this.flag = validar;
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
 
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if(flag == 1)
+            {
+                GetCommentToEdit();
+            }
+        }
+
+        private void GetCommentToEdit()
+        {
+            var Userclient = new RestClient("http://127.0.0.1:8000");
+            string ruta = "/api/comment/"+ comentarioSeleccionado.id.ToString();
+            var request = new RestRequest(ruta, Method.GET);
+            var queryResult = Userclient.Execute(request);
+            string strJason = queryResult.Content;
+            commentxId = JsonConvert.DeserializeObject<DatosConsultaComentarioById>(strJason);
+            if(commentxId != null)
+            {
+                tituloComentario.Text = commentxId.title;
+                rating.Value = commentxId.rating;
+                bodyComentario.Text = commentxId.comment;
+
+            }
+        } 
 
         private async void RegisterComments()
         {
@@ -59,9 +92,50 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
             }
         }
 
+        private async void EditComments()
+        {
+            DatosRegistroComentario comment = new DatosRegistroComentario();
+            comment.id_user = comentarioSeleccionado.id_user;
+            comment.name_user = comentarioSeleccionado.name_user;
+            comment.rating = (int)rating.Value;
+            comment.title = tituloComentario.Text;
+            comment.comment = bodyComentario.Text;
+
+            var userClient = new RestClient(url);
+            string rutaFeed = "/api/comments/"+comentarioSeleccionado.id.ToString();
+            var requestFeed = new RestRequest(rutaFeed, Method.PUT) { RequestFormat = DataFormat.Json }.AddJsonBody(comment);
+            try
+            {
+                var response = userClient.Execute(requestFeed);
+
+                if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
+                {
+                    await DisplayAlert("msg", response.Content, "ok");
+                }
+                else
+                {
+                    await DisplayAlert("Alerta", response.Content, "ok");
+                    await Navigation.PopAsync();
+                }
+
+            }
+            catch (Exception err)
+            {
+                await DisplayAlert("error", err.Message, "aceptar");
+            }
+        }
+
+
         private void enviar_Clicked(object sender, EventArgs e)
         {
-            RegisterComments();
+            if(flag == 1)
+            {
+                EditComments();
+            }
+            else
+            {
+                RegisterComments();
+            }
         }
 
         private void regresar_Clicked(object sender, EventArgs e)

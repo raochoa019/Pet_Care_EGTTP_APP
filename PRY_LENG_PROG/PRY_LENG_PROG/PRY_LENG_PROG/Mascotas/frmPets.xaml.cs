@@ -5,29 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using PRY_LENG_PROG.components;
 
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace PRY_LENG_PROG.ReservasCitas
+namespace PRY_LENG_PROG.Mascotas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PetReservation : ContentPage
+    public partial class frmPets : ContentPage
     {
-        private int pet_id;
-        public PetReservation(int id)
+        private int user_id;
+
+        public frmPets(int id)
         {
-            pet_id = id;
-            //Console.WriteLine(id);
+            user_id = id;
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
             header.Children.Add(new Header());
-            petInfo.Children.Add(new PetDetail(pet_id));
-        }
-
-        void agendarCita(object sender, EventArgs e) {
-            Navigation.PushAsync(new ChooseVet(pet_id));
+            titlePage_addPet.Children.Add(new NewPet());
+            showPets.Children.Add(new ListPets(user_id));
         }
 
         private void regresar_Clicked(object sender, EventArgs e)
