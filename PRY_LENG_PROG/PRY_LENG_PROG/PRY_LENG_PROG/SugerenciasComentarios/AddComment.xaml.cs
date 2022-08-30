@@ -49,7 +49,7 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
 
         private void GetCommentToEdit()
         {
-            var Userclient = new RestClient("http://127.0.0.1:8000");
+            var Userclient = new RestClient(url);
             string ruta = "/api/comment/"+ comentarioSeleccionado.id.ToString();
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = Userclient.Execute(request);
