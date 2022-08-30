@@ -61,5 +61,10 @@ namespace PRY_LENG_PROG
         {
             Navigation.PushAsync(new Comentarios());
         }
+
+        private void salir_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }
