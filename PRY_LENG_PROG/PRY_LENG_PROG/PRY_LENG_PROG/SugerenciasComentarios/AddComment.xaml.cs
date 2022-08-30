@@ -19,7 +19,7 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
         int user_id = (int)Application.Current.Properties["idUsuario"];
         string name_user = (string)Application.Current.Properties["nameUser"];
 
-        List<DatosConsultaComentarioById> commentxId = new List<DatosConsultaComentarioById>(); 
+        DatosConsultaComentarioById commentxId = new DatosConsultaComentarioById(); 
         DatosConsultaComentarios comentarioSeleccionado = new DatosConsultaComentarios();
         int flag;
 
@@ -38,23 +38,28 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
             base.OnAppearing();
             if(flag == 1)
             {
+                tituloPosteo.Text = "Editar Comentario";
                 GetCommentToEdit();
+            }
+            else
+            {
+                tituloPosteo.Text = "Postear Comentario";
             }
         }
 
         private void GetCommentToEdit()
         {
-            var Userclient = new RestClient("http://127.0.0.1:8000");
+            var Userclient = new RestClient(url);
             string ruta = "/api/comment/"+ comentarioSeleccionado.id.ToString();
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = Userclient.Execute(request);
             string strJason = queryResult.Content;
-            commentxId = JsonConvert.DeserializeObject<List<DatosConsultaComentarioById>>(strJason);
+            commentxId = JsonConvert.DeserializeObject<DatosConsultaComentarioById>(strJason);
             if(commentxId != null)
             {
-                tituloComentario.Text = commentxId.FirstOrDefault().title;
-                rating.Value = commentxId.FirstOrDefault().rating;
-                bodyComentario.Text = commentxId.FirstOrDefault().comment;
+                tituloComentario.Text = commentxId.title;
+                rating.Value = commentxId.rating;
+                bodyComentario.Text = commentxId.comment;
 
             }
         } 

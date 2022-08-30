@@ -41,7 +41,7 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
 
         private void GetComments()
         {
-            var Userclient = new RestClient("http://127.0.0.1:8000");
+            var Userclient = new RestClient(url);
             string ruta = "/api/comments";
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = Userclient.Execute(request);
@@ -77,8 +77,11 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
 
         private void listView_SwipeEnded(object sender, Syncfusion.ListView.XForms.SwipeEndedEventArgs e)
         {
-            DatosConsultaComentarios commentarioSelec = (DatosConsultaComentarios)e.ItemData;
-            comentarioSeleccionado = commentarioSelec;
+            if(e.ItemData != null)
+            {
+                DatosConsultaComentarios commentarioSelec = (DatosConsultaComentarios)e.ItemData;
+                comentarioSeleccionado = commentarioSelec;
+            }
 
         }
 
@@ -121,14 +124,28 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
 
         }
 
-        private void editar_Clicked(object sender, EventArgs e)
+        private async void editar_Clicked(object sender, EventArgs e)
         {
-            EditarComentario();
+            if (idUser == comentarioSeleccionado.id_user)
+            {
+                bool respuesta = await DisplayAlert("Alerta", "Está seguro que desea editar el comentario", "No", "Si");
+                if (!respuesta)
+                {
+                    EditarComentario();
+                }
+            }
+            else
+            {
+                await DisplayAlert("msg", "No puede editar este comentario", "ok");
+            }
+            listView.ResetSwipe();
+
+
         }
 
         private async void EditarComentario()
         {
-            //await Navigation.PushAsync(new AddComment(comentarioSeleccionado,1));
+            await Navigation.PushAsync(new AddComment(comentarioSeleccionado,1));
         }
     }
 }

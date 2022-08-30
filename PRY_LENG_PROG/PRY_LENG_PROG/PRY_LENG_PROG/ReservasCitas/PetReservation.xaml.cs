@@ -32,6 +32,11 @@ namespace PRY_LENG_PROG.ReservasCitas
             Navigation.PushAsync(new ChooseVet(pet_id));
         }
 
+        private void estadia(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Hoteles(pet_id));
+        }
+
         private void regresar_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
