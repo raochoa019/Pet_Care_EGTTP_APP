@@ -9,13 +9,33 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" x:Name="header"></StackLayout>
-            <StackLayout Grid.Row="1" x:Name="petInfo"></StackLayout>
-            <StackLayout Grid.Row="2" x:Name="buttons">
+
+            <StackLayout Padding="20,0" Grid.Row="1">
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                    <StackLayout>
+                        <Label
+                            TextColor="Black"
+                            FontAttributes="Bold" 
+                            FontSize="Title" 
+                            Text="Mascota">
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <ImageButton WidthRequest="30" Source="eliminar.png" Clicked="btnEliminar_Clicked" x:Name="btnEliminar" />
+                    </StackLayout>
+                </FlexLayout>
+            </StackLayout>
+
+            <StackLayout Padding="0,20" Grid.Row="2" x:Name="petInfo"></StackLayout>
+            
+            <StackLayout Grid.Row="3" x:Name="buttons">
                 <Grid Padding="20, 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -40,7 +60,8 @@
                             TextColor="White"></Button>
                 </Grid>
             </StackLayout>
-            <StackLayout Margin="0,50" Grid.Row="3" Spacing="50" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+            
+            <StackLayout Margin="0,50" Grid.Row="4" Spacing="50" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
                 <Button x:Name="regresar" Clicked="regresar_Clicked" Text="Regresar" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
             </StackLayout>
         </Grid>

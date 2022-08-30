@@ -6,33 +6,8 @@
         <Grid Padding="20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-
             <StackLayout Grid.Row="0">
-                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
-                    <StackLayout>
-                        <Label
-                            TextColor="Black"
-                            FontAttributes="Bold" 
-                            FontSize="Title" 
-                            Text="Mascota">
-                        </Label>
-                    </StackLayout>
-
-                    <StackLayout>
-                        <Label
-                            TextColor="Black"
-                            FontAttributes="Bold" 
-                            FontSize="Medium"
-                            Text="Eliminar">
-                        </Label>
-                    </StackLayout>
-                </FlexLayout>
-            </StackLayout>
-
-            <StackLayout Grid.Row="2">
                 <Grid x:Name="InfoPets">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"></ColumnDefinition>

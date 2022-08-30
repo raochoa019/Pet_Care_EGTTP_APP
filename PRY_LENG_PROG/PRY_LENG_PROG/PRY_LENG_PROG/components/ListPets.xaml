@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRY_LENG_PROG.components.ListPets">
   <ContentView.Content>
-        <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" AlignItems="Center" x:Name="PanelPets">
+        <FlexLayout Wrap="Wrap" Direction="Row" JustifyContent="SpaceEvenly" AlignItems="End" AlignContent="Start" x:Name="PanelPets">
         </FlexLayout>
     </ContentView.Content>
 </ContentView>
