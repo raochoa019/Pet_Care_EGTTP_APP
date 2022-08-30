@@ -17,8 +17,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
     {
         int user_id = (int)Application.Current.Properties["idUsuario"];
         HotelReservation reserva;
-        string dia_entrada;
-        string dia_salida;
+        string dia_entrada = "";
+        string dia_salida = "";
         public DateDetails(HotelReservation estadia)
         {
             InitializeComponent();
@@ -41,7 +41,6 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
             var client = new RestClient((string)Application.Current.Properties["direccionDb"]);
             string ruta = "/api/hotel/reservations";
             reserva.user_id = user_id;
-            reserva.pet_id = 3; //para probar
             reserva.admission_day = dateStart.Date.Day.ToString() + "/" + dateStart.Date.Month.ToString() + "/" + dateStart.Date.Year.ToString();
             reserva.day_of_exit = dateEnd.Date.Day.ToString() + "/" + dateEnd.Date.Month.ToString() + "/" + dateEnd.Date.Year.ToString();
             var request = new RestRequest(ruta, Method.POST) { RequestFormat = DataFormat.Json }.AddJsonBody(reserva);

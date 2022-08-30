@@ -54,7 +54,7 @@ namespace PRY_LENG_PROG
 
         private void estadia_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new PlaceDetails());
+            Navigation.PushAsync(new ListHotelReservations());
         }
 
         private void mascota_Clicked(object sender, EventArgs e)

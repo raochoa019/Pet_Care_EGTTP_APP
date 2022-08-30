@@ -1,4 +1,6 @@
-﻿using PRY_LENG_PROG.Modelos;
+﻿using PRY_LENG_PROG.components;
+using PRY_LENG_PROG.Modelos;
+using PRY_LENG_PROG.ReservaEstablecimiento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,13 @@ namespace PRY_LENG_PROG
     public partial class Hoteles : ContentPage
     {
         List<HotelModel> hoteles = new List<HotelModel>();
-        public Hoteles()
+        int pet;
+        public Hoteles(int pet_id)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
+            header.Children.Add(new Header());
             hoteles.Add(new HotelModel {nombreHotel = "Hotel de las Flores", direccion = "Av. El Rey 333 y Mul Mul" });
             hoteles.Add(new HotelModel { nombreHotel = "Hotel Oro Blue Hotel Resort", direccion = "Espejo y Av. Cevallos" });
             hoteles.Add(new HotelModel { nombreHotel = "Hostal Grand Hotel", direccion = "Rocafuerte y Lalama"});
@@ -24,7 +30,7 @@ namespace PRY_LENG_PROG
             hoteles.Add(new HotelModel { nombreHotel = "Hotel Oro Verde", direccion = "Ordóñez Laso s/n" });
             hoteles.Add(new HotelModel { nombreHotel = "Hotel Las Américas", direccion = "Mariano Cueva 1359" });
             hoteles.Add(new HotelModel { nombreHotel = "Hotel Grand Hotel Guayaquil", direccion = "Boyacá y 10 de Agosto" });
-
+            pet = pet_id;
         }
 
         protected override void OnAppearing()
@@ -36,7 +42,12 @@ namespace PRY_LENG_PROG
         private void listView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             HotelModel hotelSeleccionado = (HotelModel)e.ItemData;
-            //DisplayAlert("msg", hotelSeleccionado.nombreHotel, "ok");
+            Navigation.PushAsync(new PlaceDetails(hotelSeleccionado.nombreHotel,hotelSeleccionado.direccion,pet));
+        }
+
+        private void Return_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

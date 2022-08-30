@@ -17,20 +17,29 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlaceDetails : ContentPage
     {
+        string name = "";
+        string direction = "";
+        int pet_id;
         private Dictionary<string, string> detalles = new Dictionary<string, string>();
 
-        public PlaceDetails()
+        public PlaceDetails(string nombre, string direccion, int pet)
         {
             InitializeComponent();
             header.Children.Add(new Header());
-            PetInfo("1");
+            pet_id = pet;
+            name = nombre;
+            direction = direccion;
+            sitio.Text = nombre;
+            ubicacion.Text = direccion;
+            PetInfo();
         }
 
         private void Siguiente_Clicked(object sender, EventArgs e)
         {
             HotelReservation lugar = new HotelReservation();
-            lugar.nombre_hotel = "Hotel";
-            lugar.direction = "Gye";
+            lugar.pet_id = pet_id;
+            lugar.nombre_hotel = name;
+            lugar.direction = direction;
 
             Navigation.PushAsync(new ExtraDetails(lugar));
         }
@@ -39,10 +48,10 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         {
             Navigation.PopAsync();
         }
-        private void PetInfo(string id)
+        private void PetInfo()
         {
             var petClient = new RestClient((string)Application.Current.Properties["direccionDb"]);
-            string ruta = "/api/pets/"+id;
+            string ruta = "/api/pets/"+pet_id;
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = petClient.Execute(request);
             string strJason = queryResult.Content;

@@ -13,8 +13,8 @@
                 <Label FontSize="30" Text="Establecimiento"
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" />
-                <Label HorizontalOptions="Center" Text="Company name: Company"/>
-                <Label HorizontalOptions="Center" Text="Location: Jakarta Pusat"/>
+                <Label HorizontalOptions="Center" x:Name="sitio"/>
+                <Label HorizontalOptions="Center" x:Name="ubicacion"/>
                 <Label FontSize ="20" Text="Reservacion" 
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand"/>

@@ -42,7 +42,7 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         {
             modifyInformacion();
             estadia.feeding = alimentacion.Text;
-            estadia.cares = cuidados.Text;
+            estadia.special_cares = cuidados.Text;
             estadia.exercises = ejercicios.Text;
             estadia.rides = paseos.Text;
             Navigation.PushAsync(new DateDetails(estadia));
