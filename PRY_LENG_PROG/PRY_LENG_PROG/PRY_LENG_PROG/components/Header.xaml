@@ -13,20 +13,30 @@
             <StackLayout Margin="0,10" Grid.Row="0" HorizontalOptions="CenterAndExpand">
                 <Grid ColumnSpacing="50">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0">
-                        <ImageButton BackgroundColor="White" Source="Logo.jpg" WidthRequest="90"/>
+                    <StackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+                        <ImageButton BackgroundColor="White" Source="Logo.jpg" WidthRequest="50"/>
                     </StackLayout>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="Care - Stays"/>
+                        <Label Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="EGTTP"/>
+                    </Grid>
+                    <!--
                     <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
                         <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="Care - Stays"/>
                         <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="EGTTP" Margin="0,-30,0,0"/>
-                    </StackLayout>
+                    </StackLayout>-->
                     <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <ImageButton Source="profile.png" WidthRequest="40"/>
+                        <ImageButton Source="profile.png" WidthRequest="50"/>
                     </StackLayout>
+                    
                 </Grid>
             </StackLayout>
             <StackLayout Grid.Row="1" Margin="0,15,0,0">

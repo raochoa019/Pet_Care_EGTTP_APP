@@ -88,6 +88,23 @@
                            FontAttributes="Bold"></Label>
                 </Grid>
 
+                <Label Text="Fecha" Padding="0, 20, 0, 0"
+                       TextColor="Black"
+                       VerticalTextAlignment="Start"
+                       FontAttributes="Bold"
+                       FontSize="Title">
+                </Label>
+
+                <DatePicker x:Name="datePicker" 
+                            DateSelected="DateSelected"
+                            Format="yyyy-MM-dd">
+                    
+                </DatePicker>
+                <Picker x:Name="timePicker" Title="Horas Disponibles">
+                    
+                </Picker>
+                
+
             </StackLayout>
             
         </Grid>

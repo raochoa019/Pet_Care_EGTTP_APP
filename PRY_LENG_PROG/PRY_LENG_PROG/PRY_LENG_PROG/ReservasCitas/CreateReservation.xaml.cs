@@ -22,11 +22,14 @@ namespace PRY_LENG_PROG.ReservasCitas
         UserModel vet;
         private int pet_id;
         private int vet_id;
+        List<ReservationModel> reservations;
+        //List<int> times;
 
-        public CreateReservation(int id_vet,int id_pet)
+        public CreateReservation(int id_vet, int id_pet)
         {
             pet_id = id_pet;
             vet_id = id_vet;
+            //times = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
 
             InitializeComponent();
             header.Children.Add(new Header());
@@ -37,7 +40,16 @@ namespace PRY_LENG_PROG.ReservasCitas
             GetVetInfo();
             SetVetInfo();
 
+            GetReservationsDoctor();
 
+            var date = DateTime.Now;
+
+            datePicker.MinimumDate = date;
+            datePicker.MaximumDate = date.AddDays(30);
+
+            timePicker.ItemsSource = new int[]{ 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+
+            
 
         }
 
@@ -72,7 +84,7 @@ namespace PRY_LENG_PROG.ReservasCitas
 
         void GetPetInfo() {
             var petClient = new RestClient("http://127.0.0.1:8000");
-            string ruta = "/api/pets/"+pet_id.ToString();
+            string ruta = "/api/pets/" + pet_id.ToString();
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = petClient.Execute(request);
             string strJson = queryResult.Content;
@@ -87,6 +99,35 @@ namespace PRY_LENG_PROG.ReservasCitas
             var queryResult = vetClient.Execute(request);
             string strJson = queryResult.Content;
             vet = JsonConvert.DeserializeObject<UserModel>(strJson);
+        }
+
+        void GetReservationsDoctor() {
+            var reservationClient = new RestClient("http://127.0.0.1:8000");
+            string ruta = "/api/reservations/doctor/" + vet_id.ToString();
+            var request = new RestRequest(ruta, Method.GET);
+            var queryResult = reservationClient.Execute(request);
+            string strJson = queryResult.Content;
+            reservations = JsonConvert.DeserializeObject<List<ReservationModel>>(strJson);
+        }
+
+        List<int> GetTimesAllowed(DateTime date) {
+            List<int> times = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+
+            foreach (ReservationModel res in reservations) {
+                
+                if (res.date.Date.Equals(date.Date)) {
+                    times.Remove(res.date.Hour);
+                }
+                
+            }
+
+            return times;
+        }
+
+        void DateSelected(object sender, FocusEventArgs e) {
+            Console.WriteLine(datePicker.Date.ToString());
+            timePicker.ItemsSource.Clear();
+            timePicker.ItemsSource = GetTimesAllowed(datePicker.Date);
         }
     }
 }
