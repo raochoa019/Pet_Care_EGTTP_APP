@@ -38,7 +38,12 @@ namespace PRY_LENG_PROG.SugerenciasComentarios
             base.OnAppearing();
             if(flag == 1)
             {
+                tituloPosteo.Text = "Editar Comentario";
                 GetCommentToEdit();
+            }
+            else
+            {
+                tituloPosteo.Text = "Postear Comentario";
             }
         }
 
