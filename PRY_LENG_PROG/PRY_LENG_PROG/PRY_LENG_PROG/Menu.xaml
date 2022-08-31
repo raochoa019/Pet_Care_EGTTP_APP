@@ -8,8 +8,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackLayout Margin="0,10" Grid.Row="0" HorizontalOptions="CenterAndExpand">
                 <Grid ColumnSpacing="50">
@@ -70,6 +70,10 @@
                         <StackLayout Grid.Row="1" Spacing="50" Margin="0,30,0,0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             
                             <StackLayout>
+                                <ImageButton x:Name="estadia" BackgroundColor="White" Source="estadia.png" Clicked="estadia_Clicked" WidthRequest="150"/>
+                                <Label Text="Estadia" Margin="10,0,0,0" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>
+                            </StackLayout>
+                            <StackLayout>
                                 <ImageButton x:Name="sugerencia" BackgroundColor="White" Source="sugerencias.png" Clicked="sugerencia_Clicked" WidthRequest="150"/>
                                 <Label Text="Sugerencias" Margin="10,0,0,0" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>
                                 <Label Text="y Comentarios" Margin="10,0,0,0" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="Large"/>                                
@@ -80,14 +84,10 @@
 
 
             </ScrollView>
+            <StackLayout Margin="0,5,0,10" Grid.Row="3" Spacing="50" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+                <Button x:Name="salir" Clicked="salir_Clicked" Text="Cerrar Sesión" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
+            </StackLayout>            
             
-
-
-<!--            <ScrollView Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                               
-                
-
-            </ScrollView>-->
         </Grid>
         
     </ContentPage.Content>

@@ -30,7 +30,7 @@ namespace PRY_LENG_PROG.components
 
         void GetPetInfo()
         {
-            var petClient = new RestClient("http://127.0.0.1:8000");
+            var petClient = new RestClient((string)Application.Current.Properties["direccionDb"]);
             string ruta = "/api/pets/" + pet_id.ToString();
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = petClient.Execute(request);

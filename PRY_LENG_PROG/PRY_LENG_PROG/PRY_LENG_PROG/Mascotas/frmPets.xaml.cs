@@ -30,5 +30,10 @@ namespace PRY_LENG_PROG.Mascotas
         {
             Navigation.PopAsync();
         }
+
+        private void addPet_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new frmNewPet());
+        }
     }
 }

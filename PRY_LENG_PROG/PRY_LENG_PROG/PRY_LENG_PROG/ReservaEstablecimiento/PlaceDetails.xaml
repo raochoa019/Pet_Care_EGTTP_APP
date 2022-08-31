@@ -13,8 +13,8 @@
                 <Label FontSize="30" Text="Establecimiento"
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" />
-                <Label HorizontalOptions="Center" Text="Company name: Company"/>
-                <Label HorizontalOptions="Center" Text="Location: Jakarta Pusat"/>
+                <Label HorizontalOptions="Center" x:Name="sitio"/>
+                <Label HorizontalOptions="Center" x:Name="ubicacion"/>
                 <Label FontSize ="20" Text="Reservacion" 
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand"/>
@@ -24,32 +24,27 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Center">
                         <Label VerticalTextAlignment="Center" Text="Nombre"/>
-                        <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Nombre" x:Name="nombre"/>
+                        <Entry IsReadOnly="True" WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Nombre" x:Name="nombre"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
                         <Label VerticalTextAlignment="Center" Text="Especie"/>
-                        <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Especie" x:Name="especie"/>
+                        <Entry IsReadOnly="True" WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Especie" x:Name="especie"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
                         <Label VerticalTextAlignment="Center" Text="Raza"/>
-                        <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Raza" x:Name="raza"/>
+                        <Entry IsReadOnly="True" WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Raza" x:Name="raza"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand">
-                        <Label VerticalTextAlignment="Center" Text="Edad"/>
-                        <Entry WidthRequest="200" VerticalTextAlignment="Center" Placeholder="Edad" x:Name="edad"/>
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="40" Orientation="Horizontal" Grid.Row="5">
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="40" Orientation="Horizontal" Grid.Row="4">
                         <Button Clicked="Return_Clicked"  x:Name="Return" CornerRadius="10" BackgroundColor="#CB1515" Text="Regresar"/>
                         <Button Clicked="Siguiente_Clicked" x:Name="Siguiente" CornerRadius="10" BackgroundColor="#CB1515" Text="Siguiente"/>
                     </StackLayout>

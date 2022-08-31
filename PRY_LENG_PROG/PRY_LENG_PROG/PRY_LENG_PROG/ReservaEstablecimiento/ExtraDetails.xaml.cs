@@ -1,4 +1,5 @@
 ﻿using PRY_LENG_PROG.components;
+using PRY_LENG_PROG.ReservaEstablecimiento.ModelosEstablecimiento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,14 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExtraDetails : ContentPage
     {
-        Dictionary<string, string> adicionales;
-        public ExtraDetails()
+        Dictionary<string, string> adicionales = new Dictionary<string, string>();
+        HotelReservation estadia = new HotelReservation();
+        
+        public ExtraDetails(HotelReservation lugar)
         {
             InitializeComponent();
             header.Children.Add(new Header());
+            estadia = lugar;
             if (adicionales.Count > 0)
             {
                 alimentacion.Text = adicionales["alimentacion"];
@@ -29,6 +33,7 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
 
         private void Return_Clicked(object sender, EventArgs e)
         {
+            adicionales.Clear();
             modifyInformacion();
             Navigation.PopAsync();
         }
@@ -36,15 +41,23 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         private void Siguiente_Clicked(object sender, EventArgs e)
         {
             modifyInformacion();
-            Navigation.PushAsync(new DateDetails());
+            estadia.feeding = alimentacion.Text;
+            estadia.special_cares = cuidados.Text;
+            estadia.exercises = ejercicios.Text;
+            estadia.rides = paseos.Text;
+            Navigation.PushAsync(new DateDetails(estadia));
         }
         
         private void modifyInformacion()
         {
-            adicionales.Add("alimentacion", alimentacion.Text);
-            adicionales.Add("cuidados", cuidados.Text);
-            adicionales.Add("ejercicios", ejercicios.Text);
-            adicionales.Add("paseos", paseos.Text);
+            if (alimentacion.Text != null) 
+                adicionales.Add("alimentacion", alimentacion.Text);
+            if (cuidados.Text != null)
+                adicionales.Add("cuidados", cuidados.Text);
+            if (ejercicios.Text != null)
+                adicionales.Add("ejercicios", ejercicios.Text);
+            if (paseos.Text != null)
+                adicionales.Add("paseos", paseos.Text);
         }
     }
 }

@@ -52,6 +52,11 @@ namespace PRY_LENG_PROG
             Navigation.PushAsync(new ReservasCitasPage());
         }
 
+        private void estadia_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ListHotelReservations());
+        }
+
         private void mascota_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new frmPets(userAccount.id));
@@ -60,6 +65,11 @@ namespace PRY_LENG_PROG
         private void sugerencia_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new Comentarios());
+        }
+
+        private void salir_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }
