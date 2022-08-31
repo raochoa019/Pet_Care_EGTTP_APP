@@ -33,6 +33,7 @@
                         <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="Care - Stays"/>
                         <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Title" Text="EGTTP" Margin="0,-30,0,0"/>
                     </StackLayout>-->
+
                     <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <ImageButton Source="profile.png" WidthRequest="50"/>
                     </StackLayout>

@@ -103,7 +103,11 @@
                 <Picker x:Name="timePicker" Title="Horas Disponibles">
                     
                 </Picker>
-                
+                <StackLayout Margin="0,20,0,40" Grid.Row="3" Spacing="50" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+                    <Button x:Name="regresar" Clicked="regresar_Clicked" Text="Regresar" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
+                    <Button x:Name="enviar" Clicked="enviar_Clicked" Text="Enviar" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
+                </StackLayout>
+
 
             </StackLayout>
             

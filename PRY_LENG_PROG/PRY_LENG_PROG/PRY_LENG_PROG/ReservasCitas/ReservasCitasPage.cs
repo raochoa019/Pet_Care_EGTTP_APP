@@ -12,6 +12,8 @@ namespace PRY_LENG_PROG.ReservasCitas
     {
         public ReservasCitasPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
             Content = new StackLayout
             {
                 Children = {

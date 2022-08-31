@@ -21,6 +21,9 @@ namespace PRY_LENG_PROG.ReservasCitas
         public ChooseVet(int id_pet)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
+
             header.Children.Add(new Header());
             GetVets();
             // List<StackLayout> list = new List<StackLayout>();
@@ -56,7 +59,7 @@ namespace PRY_LENG_PROG.ReservasCitas
                 };
 
                 gridColumn.Children.Add(
-                    new Image { Source = "perro.jpg", WidthRequest = 50}, 0 , 0
+                    new Image { Source = "veterinario.gif", WidthRequest = 50}, 0 , 0
                 );
 
                 gridColumn.Children.Add(
@@ -86,6 +89,11 @@ namespace PRY_LENG_PROG.ReservasCitas
             string strJason = queryResult.Content;
             listVets = JsonConvert.DeserializeObject<List<UserModel>>(strJason);
             // Console.WriteLine(listVets);
+        }
+
+        void regresar_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
 
     }

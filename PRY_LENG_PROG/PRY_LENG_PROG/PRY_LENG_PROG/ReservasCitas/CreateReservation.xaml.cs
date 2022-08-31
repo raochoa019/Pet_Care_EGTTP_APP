@@ -32,6 +32,9 @@ namespace PRY_LENG_PROG.ReservasCitas
             //times = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
 
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
+
             header.Children.Add(new Header());
 
             GetPetInfo();
@@ -51,6 +54,51 @@ namespace PRY_LENG_PROG.ReservasCitas
 
             
 
+        }
+
+        void regresar_Clicked(object sender, EventArgs e) {
+            Navigation.PopAsync();
+        }
+
+        void enviar_Clicked(object sender, EventArgs e)
+        {
+            RegisterReservation();
+        }
+
+        private async void RegisterReservation()
+        {
+
+            DateTime date = new DateTime(datePicker.Date.Year, datePicker.Date.Month, datePicker.Date.Day,(int)timePicker.SelectedItem,0,0);
+            Console.WriteLine(date.ToString("yyyy-MM-dd HH:mm:ss"));
+            ReservationModel reserva = new ReservationModel();
+            reserva.doctor_id = vet_id;
+            reserva.pet_id = pet_id;
+            reserva.date = date.ToString("yyyy-MM-dd HH:mm:ss");
+            reserva.height = 0;
+            reserva.weight = 0;
+
+            var userClient = new RestClient("http://127.0.0.1:8000");
+            string rutaFeed = "/api/reservations";
+            var requestFeed = new RestRequest(rutaFeed, Method.POST) { RequestFormat = DataFormat.Json }.AddJsonBody(reserva);
+            try
+            {
+                var response = userClient.Execute(requestFeed);
+
+                if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
+                {
+                    await DisplayAlert("msg", response.Content, "ok");
+                }
+                else
+                {
+                    await DisplayAlert("Alerta", response.Content, "ok");
+                    await Navigation.PopAsync();
+                }
+
+            }
+            catch (Exception err)
+            {
+                await DisplayAlert("error", err.Message, "aceptar");
+            }
         }
 
         void SetPetInfo() {
@@ -114,9 +162,10 @@ namespace PRY_LENG_PROG.ReservasCitas
             List<int> times = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
 
             foreach (ReservationModel res in reservations) {
-                
-                if (res.date.Date.Equals(date.Date)) {
-                    times.Remove(res.date.Hour);
+                DateTime resDate = Convert.ToDateTime(res.date);
+
+                if (resDate.Date.Equals(date.Date)) {
+                    times.Remove(resDate.Hour);
                 }
                 
             }

@@ -8,7 +8,7 @@ namespace PRY_LENG_PROG.Modelos
     {
         public int id { get; set; }
         public int doctor_id { get; set; }
-        public DateTime date { get; set; }
+        public string date { get; set; }
         public int pet_id { get; set; }
         public string status { get; set; }
         public double height { get; set; }

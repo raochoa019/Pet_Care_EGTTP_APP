@@ -8,6 +8,7 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
 
             <StackLayout x:Name="header" Grid.Row="0"></StackLayout>
@@ -27,7 +28,9 @@
 
                 </StackLayout>
             </ScrollView>
-            
+            <StackLayout Margin="0,20,0,40" Grid.Row="3" Spacing="50" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+                <Button x:Name="regresar" Clicked="regresar_Clicked" Text="Regresar" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
+            </StackLayout>
         </Grid>
   </ContentPage.Content>
 </ContentPage>

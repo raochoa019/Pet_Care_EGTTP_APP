@@ -10,7 +10,7 @@ namespace PRY_LENG_PROG
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Menu());
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
