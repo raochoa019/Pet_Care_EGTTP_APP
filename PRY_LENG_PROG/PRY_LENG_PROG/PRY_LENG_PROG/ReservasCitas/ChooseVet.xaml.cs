@@ -16,7 +16,7 @@ namespace PRY_LENG_PROG.ReservasCitas
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChooseVet : ContentPage
     {
-
+        string url = (string)Application.Current.Properties["direccionDb"];
         List<UserModel> listVets = new List<UserModel>();
         public ChooseVet(int id_pet)
         {
@@ -82,7 +82,7 @@ namespace PRY_LENG_PROG.ReservasCitas
         }
 
         void GetVets() {
-            var vetsClient = new RestClient("http://127.0.0.1:8000");
+            var vetsClient = new RestClient(url);
             string ruta = "/api/vets";
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = vetsClient.Execute(request);

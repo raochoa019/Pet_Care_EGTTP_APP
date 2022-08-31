@@ -23,6 +23,7 @@ namespace PRY_LENG_PROG.ReservasCitas
         private int pet_id;
         private int vet_id;
         List<ReservationModel> reservations;
+        string url = (string)Application.Current.Properties["direccionDb"];
         //List<int> times;
 
         public CreateReservation(int id_vet, int id_pet)
@@ -77,7 +78,7 @@ namespace PRY_LENG_PROG.ReservasCitas
             reserva.height = 0;
             reserva.weight = 0;
 
-            var userClient = new RestClient("http://127.0.0.1:8000");
+            var userClient = new RestClient(url);
             string rutaFeed = "/api/reservations";
             var requestFeed = new RestRequest(rutaFeed, Method.POST) { RequestFormat = DataFormat.Json }.AddJsonBody(reserva);
             try
@@ -131,7 +132,7 @@ namespace PRY_LENG_PROG.ReservasCitas
         }
 
         void GetPetInfo() {
-            var petClient = new RestClient("http://127.0.0.1:8000");
+            var petClient = new RestClient(url);
             string ruta = "/api/pets/" + pet_id.ToString();
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = petClient.Execute(request);
@@ -141,7 +142,7 @@ namespace PRY_LENG_PROG.ReservasCitas
 
         void GetVetInfo()
         {
-            var vetClient = new RestClient("http://127.0.0.1:8000");
+            var vetClient = new RestClient(url);
             string ruta = "/api/users/" + vet_id.ToString();
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = vetClient.Execute(request);
@@ -150,7 +151,7 @@ namespace PRY_LENG_PROG.ReservasCitas
         }
 
         void GetReservationsDoctor() {
-            var reservationClient = new RestClient("http://127.0.0.1:8000");
+            var reservationClient = new RestClient(url);
             string ruta = "/api/reservations/doctor/" + vet_id.ToString();
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = reservationClient.Execute(request);

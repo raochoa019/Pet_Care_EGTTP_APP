@@ -10,6 +10,7 @@ namespace PRY_LENG_PROG.ReservasCitas
 {
     public class ReservasCitasPage : ContentPage
     {
+        private int user_id = (int)Application.Current.Properties["idUsuario"];
         public ReservasCitasPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);
@@ -19,7 +20,7 @@ namespace PRY_LENG_PROG.ReservasCitas
                 Children = {
                     new Header(),
                     new NewPet(),
-                    new Pet(2,"Lupita","perro.jpg")
+                    new ListPets(user_id)
                 }
             };
         }
