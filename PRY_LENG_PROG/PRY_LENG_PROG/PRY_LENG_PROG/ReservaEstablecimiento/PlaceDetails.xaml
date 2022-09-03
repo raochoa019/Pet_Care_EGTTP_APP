@@ -45,8 +45,8 @@
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="CenterAndExpand" Spacing="40" Orientation="Horizontal" Grid.Row="4">
-                        <Button Clicked="Return_Clicked"  x:Name="Return" CornerRadius="10" BackgroundColor="#CB1515" Text="Regresar"/>
-                        <Button Clicked="Siguiente_Clicked" x:Name="Siguiente" CornerRadius="10" BackgroundColor="#CB1515" Text="Siguiente"/>
+                        <Button Clicked="Return_Clicked"  x:Name="Return" CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Regresar"/>
+                        <Button Clicked="Siguiente_Clicked" x:Name="Siguiente" CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Siguiente"/>
                     </StackLayout>
                 </Grid>
 

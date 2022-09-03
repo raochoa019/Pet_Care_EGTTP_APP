@@ -36,8 +36,8 @@
                     </StackLayout>
 
                     <StackLayout VerticalOptions="CenterAndExpand" Margin="85,0" Spacing="60" Orientation="Horizontal" Grid.Row="2">
-                        <Button Clicked="Return_Clicked" x:Name="Return"  CornerRadius="10" BackgroundColor="#CB1515" Text="Regresar"/>
-                        <Button Clicked="Agendar_Clicked"  x:Name="Agendar" CornerRadius="10" BackgroundColor="#CB1515" Text="Agendar"/>
+                        <Button Clicked="Return_Clicked" x:Name="Return"  CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Regresar"/>
+                        <Button Clicked="Agendar_Clicked"  x:Name="Agendar" CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Agendar"/>
                     </StackLayout>
                 </Grid>
 

@@ -1,6 +1,7 @@
 ﻿using PRY_LENG_PROG.components;
 using PRY_LENG_PROG.Modelos;
 using PRY_LENG_PROG.ReservaEstablecimiento;
+using PRY_LENG_PROG.ReservaEstablecimiento.ModelosEstablecimiento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,11 @@ namespace PRY_LENG_PROG
         private void listView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             HotelModel hotelSeleccionado = (HotelModel)e.ItemData;
-            Navigation.PushAsync(new PlaceDetails(hotelSeleccionado.nombreHotel,hotelSeleccionado.direccion,pet));
+            HotelReservation hotel = new HotelReservation();
+            hotel.nombre_hotel = hotelSeleccionado.nombreHotel;
+            hotel.direction = hotelSeleccionado.direccion;
+            hotel.pet_id = pet;
+            Navigation.PushAsync(new PlaceDetails(hotel,false));
         }
 
         private void Return_Clicked(object sender, EventArgs e)

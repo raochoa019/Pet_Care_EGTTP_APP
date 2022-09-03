@@ -14,50 +14,35 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExtraDetails : ContentPage
     {
-        Dictionary<string, string> adicionales = new Dictionary<string, string>();
         HotelReservation estadia = new HotelReservation();
-        
-        public ExtraDetails(HotelReservation lugar)
+        bool act = false;
+        public ExtraDetails(HotelReservation lugar, bool actualizar)
         {
             InitializeComponent();
             header.Children.Add(new Header());
             estadia = lugar;
-            if (adicionales.Count > 0)
+            act = actualizar;
+            if (act)
             {
-                alimentacion.Text = adicionales["alimentacion"];
-                cuidados.Text = adicionales["cuidados"];
-                ejercicios.Text = adicionales["ejercicios"];
-                paseos.Text = adicionales["paseos"];
+                alimentacion.Text = lugar.feeding;
+                cuidados.Text = lugar.special_cares;
+                ejercicios.Text = lugar.exercises;
+                paseos.Text = lugar.rides;
             }
         }
 
         private void Return_Clicked(object sender, EventArgs e)
         {
-            adicionales.Clear();
-            modifyInformacion();
             Navigation.PopAsync();
         }
 
         private void Siguiente_Clicked(object sender, EventArgs e)
         {
-            modifyInformacion();
             estadia.feeding = alimentacion.Text;
             estadia.special_cares = cuidados.Text;
             estadia.exercises = ejercicios.Text;
             estadia.rides = paseos.Text;
-            Navigation.PushAsync(new DateDetails(estadia));
-        }
-        
-        private void modifyInformacion()
-        {
-            if (alimentacion.Text != null) 
-                adicionales.Add("alimentacion", alimentacion.Text);
-            if (cuidados.Text != null)
-                adicionales.Add("cuidados", cuidados.Text);
-            if (ejercicios.Text != null)
-                adicionales.Add("ejercicios", ejercicios.Text);
-            if (paseos.Text != null)
-                adicionales.Add("paseos", paseos.Text);
+            Navigation.PushAsync(new DateDetails(estadia,act));
         }
     }
 }
