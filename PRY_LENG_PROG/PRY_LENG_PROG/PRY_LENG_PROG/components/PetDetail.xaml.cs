@@ -53,7 +53,7 @@ namespace PRY_LENG_PROG.components
             );
 
             pet_detail.Children.Add(
-                new Label { Text = pet.birth_date.ToString(), TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Start },
+                new Label { Text = pet.birth_date, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Start },
                 1, 1
             );
 

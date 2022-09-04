@@ -24,7 +24,8 @@
                         </Label>
                     </StackLayout>
 
-                    <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <ImageButton WidthRequest="30" Source="edit.png" Clicked="btnEditar_Clicked" x:Name="btnEditar" />
                         <ImageButton WidthRequest="30" Source="eliminar.png" Clicked="btnEliminar_Clicked" x:Name="btnEliminar" />
                     </StackLayout>
                 </FlexLayout>

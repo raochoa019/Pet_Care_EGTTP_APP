@@ -68,7 +68,11 @@ namespace PRY_LENG_PROG.ReservasCitas
                 await DisplayAlert("Eliminación", "La mascota se ha eliminado exitosamente", "ok");
                 await Navigation.PushAsync(new Mascotas.frmPets(user_id));
             }
+        }
 
+        private void btnEditar_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Mascotas.frmEditPet(pet_id));
         }
     }
 }
