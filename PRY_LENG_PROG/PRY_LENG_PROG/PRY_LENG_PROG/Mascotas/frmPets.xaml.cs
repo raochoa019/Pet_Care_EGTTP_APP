@@ -41,5 +41,7 @@ namespace PRY_LENG_PROG.Mascotas
             base.OnAppearing();
             Application.Current.Properties["regresoConsulta"] = false;
         }
+
+
     }
 }

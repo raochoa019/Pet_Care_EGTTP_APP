@@ -73,6 +73,19 @@ namespace PRY_LENG_PROG.Mascotas
                 }
             }
         }
+        private async void returnConsulta()
+        {
+            if ((bool)Application.Current.Properties["regresoConsulta"])
+            {
+                await Navigation.PopAsync();
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            returnConsulta();
+        }
 
         private void regresar_Clicked(object sender, EventArgs e)
         {
