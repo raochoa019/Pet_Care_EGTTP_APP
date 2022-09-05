@@ -76,10 +76,6 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         }
         private async void returnConsulta()
         {
-            if (Application.Current.Properties["regresoReservaHotel"] == null)
-            {
-                Console.WriteLine("nuloooooooo");
-            }
             if ((bool)Application.Current.Properties["regresoReservaHotel"] || (bool) Application.Current.Properties["regresoActualizacionReservaHotel"])
             {
                 await Navigation.PopAsync();
