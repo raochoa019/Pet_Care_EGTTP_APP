@@ -15,6 +15,8 @@ namespace PRY_LENG_PROG.components
         public Header()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
         }
     }
 }

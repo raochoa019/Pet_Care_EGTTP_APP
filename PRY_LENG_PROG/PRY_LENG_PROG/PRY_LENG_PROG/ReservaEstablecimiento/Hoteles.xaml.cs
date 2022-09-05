@@ -38,6 +38,7 @@ namespace PRY_LENG_PROG
         {
             base.OnAppearing();
             listView.ItemsSource = hoteles;
+            returnConsulta();
         }
 
         private void listView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
@@ -53,6 +54,14 @@ namespace PRY_LENG_PROG
         private void Return_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+ 
+        private async void returnConsulta()
+        {
+            if ((bool)Application.Current.Properties["regresoReservaHotel"])
+            {
+                await Navigation.PopAsync();
+            }
         }
     }
 }

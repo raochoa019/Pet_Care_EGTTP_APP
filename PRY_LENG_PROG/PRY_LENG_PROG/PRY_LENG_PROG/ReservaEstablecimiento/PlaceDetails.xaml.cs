@@ -25,6 +25,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         {
             InitializeComponent();
             header.Children.Add(new Header());
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
             hotel = _hotel;
             act = actualizar;
             pet_id = hotel.pet_id;
@@ -65,6 +67,22 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
                 nombre.Text = pet.name;
                 especie.Text = pet.species;
                 raza.Text = pet.breed;
+            }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            returnConsulta();
+        }
+        private async void returnConsulta()
+        {
+            if (Application.Current.Properties["regresoReservaHotel"] == null)
+            {
+                Console.WriteLine("nuloooooooo");
+            }
+            if ((bool)Application.Current.Properties["regresoReservaHotel"] || (bool) Application.Current.Properties["regresoActualizacionReservaHotel"])
+            {
+                await Navigation.PopAsync();
             }
         }
     }

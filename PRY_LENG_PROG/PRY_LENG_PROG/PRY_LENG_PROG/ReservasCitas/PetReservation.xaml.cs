@@ -74,5 +74,11 @@ namespace PRY_LENG_PROG.ReservasCitas
         {
             Navigation.PushAsync(new Mascotas.frmEditPet(pet_id));
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Application.Current.Properties["regresoReservaHotel"] = false;
+        }
     }
 }
