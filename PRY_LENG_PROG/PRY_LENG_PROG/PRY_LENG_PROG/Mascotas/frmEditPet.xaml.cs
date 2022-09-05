@@ -29,17 +29,17 @@ namespace PRY_LENG_PROG.Mascotas
             InitializeComponent();
             fecha.MaximumDate = DateTime.Now;
             initializeLists();
-            GetInfoPet(pet_id);
+            GetInfoPet();
             fillFieldsPet();
             NavigationPage.SetHasNavigationBar(this, false);
             MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
             header.Children.Add(new Header());
         }
 
-        private void GetInfoPet(int pet_id)
+        private void GetInfoPet()
         {
             var petClient = new RestClient(url);
-            string ruta = "/api/pets/" + pet_id.ToString();
+            string ruta = "/api/pets/" + pet_id;
             var request = new RestRequest(ruta, Method.GET);
             var queryResult = petClient.Execute(request);
             string strJson = queryResult.Content;
