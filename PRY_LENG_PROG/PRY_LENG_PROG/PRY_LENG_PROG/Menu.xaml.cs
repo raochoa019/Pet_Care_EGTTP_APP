@@ -18,6 +18,7 @@ namespace PRY_LENG_PROG
     public partial class Menu : ContentPage
     {
         UserModel userAccount = new UserModel();
+
         public Menu(UserModel usuario)
         {
             this.userAccount = usuario;

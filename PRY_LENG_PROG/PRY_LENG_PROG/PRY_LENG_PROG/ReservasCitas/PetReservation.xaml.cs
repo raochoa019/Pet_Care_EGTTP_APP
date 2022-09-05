@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
+using Newtonsoft.Json;
 using PRY_LENG_PROG.components;
+using PRY_LENG_PROG.Modelos;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,17 +17,19 @@ namespace PRY_LENG_PROG.ReservasCitas
     public partial class PetReservation : ContentPage
     {
         private int pet_id;
+        private PetModel pet;
         private int user_id = (int)Application.Current.Properties["idUsuario"];
         private string url = (string)Application.Current.Properties["direccionDb"];
-        public PetReservation(int id)
+        public PetReservation(int pet_id)
         {
-            pet_id = id;
+            this.pet_id = pet_id;
             //Console.WriteLine(id);
             InitializeComponent();
+            GetInfoPet();
             NavigationPage.SetHasNavigationBar(this, false);
             MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
             header.Children.Add(new Header());
-            petInfo.Children.Add(new PetDetail(pet_id));
+            petInfo.Children.Add(new PetDetail(pet));
         }
 
         void agendarCita(object sender, EventArgs e) {
@@ -71,7 +75,7 @@ namespace PRY_LENG_PROG.ReservasCitas
             else
             {
                 await DisplayAlert("Eliminación", "La mascota se ha eliminado exitosamente", "ok");
-                await Navigation.PushAsync(new Mascotas.frmPets(user_id));
+                await Navigation.PopAsync();
             }
         }
 
@@ -79,11 +83,25 @@ namespace PRY_LENG_PROG.ReservasCitas
         {
             Navigation.PushAsync(new Mascotas.frmEditPet(pet_id));
         }
-
+        
         protected override void OnAppearing()
         {
             base.OnAppearing();
             Application.Current.Properties["regresoReservaHotel"] = false;
+            Application.Current.Properties["regresoActualizacionReservaHotel"] = false;
+            GetInfoPet();
+            petInfo.Children.Clear();
+            petInfo.Children.Add(new PetDetail(pet));
+        }
+
+        void GetInfoPet()
+        {
+            var petClient = new RestClient((string)Application.Current.Properties["direccionDb"]);
+            string ruta = "/api/pets/" + pet_id;
+            var request = new RestRequest(ruta, Method.GET);
+            var queryResult = petClient.Execute(request);
+            string strJson = queryResult.Content;
+            pet = JsonConvert.DeserializeObject<PetModel>(strJson);
         }
     }
 }

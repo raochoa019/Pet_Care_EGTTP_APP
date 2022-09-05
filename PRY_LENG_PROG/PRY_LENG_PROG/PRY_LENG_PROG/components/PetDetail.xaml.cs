@@ -16,26 +16,12 @@ namespace PRY_LENG_PROG.components
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PetDetail : ContentView
     {
-        private int pet_id;
-        PetModel pet;
-        public PetDetail(int id)
+        private PetModel pet;
+        public PetDetail(PetModel pet)
         {
-            pet_id = id;
+            this.pet = pet;
             InitializeComponent();
-
-            GetPetInfo();
-            //imagePet.Source(pet.species);
             SetPetInfo();
-        }
-
-        void GetPetInfo()
-        {
-            var petClient = new RestClient((string)Application.Current.Properties["direccionDb"]);
-            string ruta = "/api/pets/" + pet_id.ToString();
-            var request = new RestRequest(ruta, Method.GET);
-            var queryResult = petClient.Execute(request);
-            string strJson = queryResult.Content;
-            pet = JsonConvert.DeserializeObject<PetModel>(strJson);
         }
 
         void SetPetInfo()

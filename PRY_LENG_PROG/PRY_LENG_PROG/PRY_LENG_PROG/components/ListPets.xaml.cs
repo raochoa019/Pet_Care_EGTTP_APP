@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using RestSharp;
 using PRY_LENG_PROG.Modelos;
 
 using Xamarin.Forms;
@@ -15,28 +13,15 @@ namespace PRY_LENG_PROG.components
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListPets : ContentView
     {
-        List<PetModel> pets = new List<PetModel>();
+        List<PetModel> pets;
         IEnumerable<PetModel> petsSource = new List<PetModel>();
-        private int user_id;
 
-        public ListPets(int user_id)
+        public ListPets(List<PetModel> pets)
         {
-            this.user_id = user_id;
+            this.pets = pets;
+            petsSource = this.pets;
             InitializeComponent();
-
-            GetPetsByUser(this.user_id);
             ShowPets();
-        }
-
-        void GetPetsByUser(int user_id)
-        {
-            var petClient = new RestClient((string)Application.Current.Properties["direccionDb"]);
-            string ruta = "/api/pets/user/" + user_id.ToString();
-            var request = new RestRequest(ruta, Method.GET);
-            var queryResult = petClient.Execute(request);
-            string strJson = queryResult.Content;
-            pets = JsonConvert.DeserializeObject<List<PetModel>>(strJson);
-            petsSource = pets;
         }
 
         void ShowPets()
@@ -49,7 +34,7 @@ namespace PRY_LENG_PROG.components
                     defaultImage = "gato.jpg";
                 } 
 
-                PanelPets.Children.Add(new Pet(pet.id, pet.name, defaultImage));
+                PanelPets.Children.Add(new Pet(pet, defaultImage));
             }
         }
 
