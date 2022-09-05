@@ -24,6 +24,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         {
             InitializeComponent();
             header.Children.Add(new Header());
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
         }
 
         private void GetReservations()
@@ -40,12 +42,18 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
                 {
                     listView.ItemsSource = reservaciones;
                 }
+                spinner.IsRunning = false;
             });
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            GetReservations();
+            Application.Current.Properties["regresoActualizacionReservaHotel"] = false;
+            Application.Current.Properties["regresoReservaHotel"] = false;
+            spinner.IsRunning = true;
+            Thread hilo = new Thread(GetReservations);
+            hilo.Start();
+            
         }
 
         private async void listView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
@@ -69,8 +77,11 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
             }
             else
             {
-                await DisplayAlert("Eliminar", "¿Esta seguro que desea eliminar esta reserva?", "Si", "No");
-                DeleteReservation(hotelSeleccionado.id);
+                bool acept =  await DisplayAlert("Eliminar", "¿Esta seguro que desea eliminar esta reserva?", "Si", "No");
+                if (acept)
+                {
+                    DeleteReservation(hotelSeleccionado.id);
+                } 
             }
             
         }
@@ -80,11 +91,6 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
             Navigation.PopAsync();
         }
 
-        private void listView_ItemHolding(object sender, Syncfusion.ListView.XForms.ItemHoldingEventArgs e)
-        {
-            ReservationWithPetInfo hotelSeleccionado = (ReservationWithPetInfo)e.ItemData;
-            DisplayAlert("Prueba", "Id: "+hotelSeleccionado.id, "ok");
-        }
         private async void DeleteReservation(int id)
         {
             var hotelClient = new RestClient((string)Application.Current.Properties["direccionDb"]);

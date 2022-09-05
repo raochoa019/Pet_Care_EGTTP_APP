@@ -50,7 +50,7 @@
 
                 </syncfusion:SfListView>
                 <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Button Clicked="Return_Clicked" x:Name="Return"  CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Regresar"/>
+                    <Button Clicked="Return_Clicked" x:Name="Return"  CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Margin="10" Text="Regresar"/>
                 </StackLayout>
             </Grid>
         </StackLayout>

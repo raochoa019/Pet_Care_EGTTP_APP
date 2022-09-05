@@ -7,53 +7,53 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" x:Name="header"></StackLayout>
             <StackLayout Grid.Row="1" x:Name="Info">
-                <Label FontSize="30" Text="Detalles adicionales"
+                <Label  Text="Detalles adicionales"
                 VerticalOptions="Center" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
 
-                <Grid>
+                <Grid Grid.Row="2">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                       
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="400"/>
                     </Grid.ColumnDefinitions>
-                    <StackLayout VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="Fill">
-                        <Label Margin="25,10,25,0" VerticalTextAlignment="Center" Text="Alimentacion"/>
+                    <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="FillAndExpand">
+                        <Label Margin="25,0,25,0" VerticalTextAlignment="Center" Text="Alimentacion" TextColor="Black" />
                         <Editor Margin="20,0,20,0" x:Name="alimentacion"/>
                     </StackLayout>
 
                     <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Fill">
-                        <Label Margin="25,10,25,0" VerticalTextAlignment="Center" Text="Cuidados especiales"/>
+                        <Label Margin="25,00,25,0" VerticalTextAlignment="Center" Text="Cuidados especiales" TextColor="Black" />
                         <Editor Margin="20,0,20,0"  x:Name="cuidados"/>
                     </StackLayout>
 
                     <StackLayout Orientation="Vertical" Grid.Row="2" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="FillAndExpand">
-                        <Label Margin="25,10,25,0" VerticalTextAlignment="Center" Text="Ejercicios"/>
-                        <Editor Margin="20,2,20,10"  x:Name="ejercicios"/>
+                        <Label Margin="25,0,25,0" VerticalTextAlignment="Center" Text="Ejercicios" TextColor="Black" />
+                        <Editor Margin="20,0,20,0"  x:Name="ejercicios"/>
                     </StackLayout>
 
                     <StackLayout Orientation="Vertical" Grid.Row="3" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Fill">
-                        <Label Margin="25,10,25,0" VerticalTextAlignment="Center" Text="Paseos"/>
-                        <Editor Margin="20,2,20,10" x:Name="paseos"/>
-                    </StackLayout>
-
-                    <StackLayout VerticalOptions="CenterAndExpand" Margin="85,0" Spacing="60" Orientation="Horizontal" Grid.Row="5">
-                        <Button Clicked="Return_Clicked"  x:Name="Return" CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Regresar"/>
-                        <Button Clicked="Siguiente_Clicked"  x:Name="Siguiente" CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Siguiente"/>
+                        <Label Margin="25,10,25,0" VerticalTextAlignment="Center" Text="Paseos" TextColor="Black"/>
+                        <Editor Margin="20,0,20,10" x:Name="paseos"/>
                     </StackLayout>
                 </Grid>
+                <StackLayout VerticalOptions="CenterAndExpand" Margin="85,10" Spacing="60" Orientation="Horizontal" Grid.Row="3">
+                    <Button Clicked="Return_Clicked"  x:Name="Return" CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Regresar"/>
+                    <Button Clicked="Siguiente_Clicked"  x:Name="Siguiente" CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Siguiente"/>
+                </StackLayout>
 
             </StackLayout>
         </Grid>

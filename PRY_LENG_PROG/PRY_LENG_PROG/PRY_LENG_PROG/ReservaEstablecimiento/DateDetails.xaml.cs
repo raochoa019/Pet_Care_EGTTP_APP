@@ -24,6 +24,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         {
             InitializeComponent();
             header.Children.Add(new Header());
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
             reserva = estadia;
             act = actualizar;
             if (act)
@@ -71,6 +73,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
                 else
                 {
                     await DisplayAlert("Alerta", response.Content, "ok");
+                    Application.Current.Properties["regresoReservaHotel"] = true;
+                    await Navigation.PopAsync();
                 }
 
             }
@@ -78,6 +82,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
             {
                 await DisplayAlert("error", err.Message, "aceptar");
             }
+            
+            
         }
         private async void actualizar()
         {
@@ -99,6 +105,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
                 else
                 {
                     await DisplayAlert("Alerta", response.Content, "ok");
+                    Application.Current.Properties["regresoActualizacionReservaHotel"] = true;
+                    await Navigation.PopAsync();
                 }
 
             }

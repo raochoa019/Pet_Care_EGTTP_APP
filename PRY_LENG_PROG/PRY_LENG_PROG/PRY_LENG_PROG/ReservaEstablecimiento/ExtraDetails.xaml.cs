@@ -20,6 +20,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         {
             InitializeComponent();
             header.Children.Add(new Header());
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
             estadia = lugar;
             act = actualizar;
             if (act)
@@ -30,7 +32,7 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
                 paseos.Text = lugar.rides;
             }
         }
-
+        
         private void Return_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
@@ -44,5 +46,18 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
             estadia.rides = paseos.Text;
             Navigation.PushAsync(new DateDetails(estadia,act));
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            returnConsulta();
+        }
+        private async void returnConsulta()
+        {
+            if ((bool)Application.Current.Properties["regresoReservaHotel"] || (bool)Application.Current.Properties["regresoActualizacionReservaHotel"])
+            {
+                await Navigation.PopAsync();
+            }
+        }
+
     }
 }
