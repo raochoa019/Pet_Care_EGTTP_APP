@@ -26,6 +26,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Mascotas\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ReservasCitas\HistoricalReservationDoctor.xaml.cs">
+      <DependentUpon>HistoricalReservationDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ReservasCitas\HistoricalReservation.xaml.cs">
+      <DependentUpon>HistoricalReservation.xaml</DependentUpon>
+    </Compile>
     <Compile Update="ReservasCitas\PetReservation.xaml.cs">
       <DependentUpon>PetReservation.xaml</DependentUpon>
     </Compile>
@@ -80,7 +90,13 @@
     <EmbeddedResource Update="ReservaEstablecimiento\UpdateDateReservation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="ReservasCitas\HistoricalReservation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="ReservasCitas\PetReservation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ReservasCitas\ReservationDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SugerenciasComentarios\Comentarios.xaml">

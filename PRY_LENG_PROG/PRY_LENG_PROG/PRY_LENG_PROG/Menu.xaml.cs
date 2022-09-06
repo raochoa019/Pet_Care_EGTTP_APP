@@ -18,6 +18,7 @@ namespace PRY_LENG_PROG
     public partial class Menu : ContentPage
     {
         UserModel userAccount = new UserModel();
+        string userRol;
         public Menu(UserModel usuario)
         {
             this.userAccount = usuario;
@@ -25,10 +26,19 @@ namespace PRY_LENG_PROG
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
+            
+            if (userAccount.rol == "Doctor")
+            {
+                btn_mascota.IsVisible = false;
+                second_row_btn.IsVisible = false;
+            }
 
             Application.Current.Properties["direccionDb"] = "http://127.0.0.1:8000";
             Application.Current.Properties["idUsuario"] = userAccount.id;
             Application.Current.Properties["nameUser"] = userAccount.name;
+            Application.Current.Properties["userRol"] = userAccount.rol;
+            userRol = userAccount.rol;
+            
 
 
             List<Carrusel> images = new List<Carrusel>();
@@ -49,7 +59,13 @@ namespace PRY_LENG_PROG
 
         private void cita_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ReservasCitasPage());
+            if (userRol == "User") {
+                Navigation.PushAsync(new ReservasCitasPage());
+            } else
+            {
+                Navigation.PushAsync(new HistoricalReservationDoctor());
+            }
+            
         }
 
         private void estadia_Clicked(object sender, EventArgs e)

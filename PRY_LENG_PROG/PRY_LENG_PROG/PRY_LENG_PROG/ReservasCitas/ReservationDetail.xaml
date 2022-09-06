@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRY_LENG_PROG.ReservasCitas.ReservationDetail">
+    <ContentPage.Content>
+        <Grid Padding="20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <StackLayout x:Name="header" Grid.Row="0"></StackLayout>
+            <StackLayout Grid.Row="1">
+                <Label Text="Detalle de la Cita" HorizontalOptions="CenterAndExpand"
+                       FontSize="Title" 
+                       FontAttributes="Bold"
+                       TextColor="Black"></Label>
+            </StackLayout>
+            <StackLayout x:Name="container" Grid.Row="2">
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Nombre" Grid.Row="0" Grid.ColumnSpan="2"
+                                FontSize="Subtitle" 
+                                FontAttributes="Bold" 
+                                TextColor="Black" ></Label>
+
+                        <Label Text="Doctor" Grid.Row="2" x:Name="user_name" Grid.ColumnSpan="2"
+                                FontSize="Subtitle" 
+                                FontAttributes="Bold" 
+                                TextColor="Black" ></Label>
+
+                        <Label Text="Email" Grid.Row="4" Grid.ColumnSpan="2"
+                                FontSize="Subtitle" 
+                                FontAttributes="Bold" 
+                                TextColor="Black" ></Label>
+
+                        <Label Text="Fecha" Grid.Row="6" Grid.ColumnSpan="2"
+                                FontSize="Subtitle" 
+                                FontAttributes="Bold" 
+                                TextColor="Black" ></Label>
+
+                        <Label Text="Estado" Grid.Row="8" Grid.ColumnSpan="2"
+                                FontSize="Subtitle" 
+                                FontAttributes="Bold" 
+                                TextColor="Black" ></Label>
+
+                        <Label Text="Altura" Grid.Row="11" Grid.ColumnSpan="2"
+                                FontSize="Subtitle" 
+                                FontAttributes="Bold" 
+                                TextColor="Black" ></Label>
+
+                        <Label Text="Peso" Grid.Row="13" Grid.ColumnSpan="2"
+                                FontSize="Subtitle" 
+                                FontAttributes="Bold" 
+                                TextColor="Black" ></Label>
+
+                        <Label Text="Comentarios" Grid.Row="15" Grid.ColumnSpan="2"
+                                FontSize="Subtitle" 
+                                FontAttributes="Bold" 
+                                TextColor="Black" ></Label>
+
+                        <Frame BackgroundColor="#ccc" CornerRadius="20" Grid.Row="1" Grid.ColumnSpan="2" Padding="20,10"> 
+                            <Label x:Name="nombre" 
+                                TextColor="Black"></Label>    
+                        </Frame>
+
+                        <Frame BackgroundColor="#ccc" CornerRadius="20" Grid.Row="3" Grid.ColumnSpan="2" Padding="20,10">
+                            <Label x:Name="user"
+                                TextColor="Black"></Label>
+                        </Frame>
+
+                        <Frame BackgroundColor="#ccc" CornerRadius="20" Grid.Row="5" Grid.ColumnSpan="2" Padding="20,10">
+                            <Label x:Name="email" 
+                                TextColor="Black"></Label>
+                        </Frame>
+
+                        <Frame BackgroundColor="#ccc" CornerRadius="20" Grid.Row="7" Grid.ColumnSpan="2" Padding="20,10">
+                            <Label x:Name="fecha" 
+                                TextColor="Black"></Label>
+                        </Frame>
+
+                        <RadioButton IsEnabled="False" x:Name="rdbPendiente" Content="PENDIENTE" Grid.Row="9" Grid.ColumnSpan="2" GroupName="status"></RadioButton>
+                        <RadioButton IsEnabled="False" x:Name="rdbTerminado" Content="TERMINADO" Grid.Row="10" Grid.ColumnSpan="2" GroupName="status"></RadioButton>
+
+                        <Editor Keyboard="Numeric" IsEnabled="False" BackgroundColor="#E7E7E7" Grid.Row="12" Grid.ColumnSpan="2" Placeholder="Altura" x:Name="txtHeight"/>
+                        <Editor Keyboard="Numeric" IsEnabled="False" BackgroundColor="#E7E7E7" Grid.Row="14" Grid.ColumnSpan="2" Placeholder="Peso" x:Name="txtWeight"/>
+
+                        <Editor IsEnabled="False" BackgroundColor="#E7E7E7" Grid.Row="16" Grid.ColumnSpan="2" HeightRequest="100" Placeholder="" x:Name="coments"/>
+
+
+                        <Button x:Name="regresar" Grid.Row="17" Grid.Column="0" Margin="0,20" Clicked="regresar_Clicked" Text="Regresar" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
+                        <Button IsEnabled="False" Grid.Row="17" Grid.Column="1" Margin="0,20" x:Name="btn_guardar" Clicked="saveReservation" CornerRadius="25" Text="Guardar" BackgroundColor="#E73522" TextColor="White"/>  
+                        
+                        
+
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
