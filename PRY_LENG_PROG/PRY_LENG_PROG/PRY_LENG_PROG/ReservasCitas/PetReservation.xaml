@@ -24,7 +24,8 @@
                         </Label>
                     </StackLayout>
 
-                    <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <ImageButton WidthRequest="30" Source="edit.png" Clicked="btnEditar_Clicked" x:Name="btnEditar" />
                         <ImageButton WidthRequest="30" Source="eliminar.png" Clicked="btnEliminar_Clicked" x:Name="btnEliminar" />
                     </StackLayout>
                 </FlexLayout>
@@ -49,7 +50,7 @@
                     
                     <Button Grid.Row="0" Grid.Column="1" 
                             Text="Control" BackgroundColor="#CB1515" 
-                            TextColor="White"></Button>
+                            TextColor="White" Clicked="control"></Button>
                     
                     <Button Grid.Row="1" Grid.Column="0" 
                             Text="Historial" BackgroundColor="#CB1515" 

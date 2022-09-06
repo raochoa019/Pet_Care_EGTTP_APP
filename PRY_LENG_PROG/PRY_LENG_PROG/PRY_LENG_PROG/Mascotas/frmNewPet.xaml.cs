@@ -24,6 +24,7 @@ namespace PRY_LENG_PROG.Mascotas
         {
             InitializeComponent();
             initializeLists();
+            fecha.MaximumDate = DateTime.Now;           
             NavigationPage.SetHasNavigationBar(this, false);
             MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
             header.Children.Add(new Header());
@@ -73,11 +74,6 @@ namespace PRY_LENG_PROG.Mascotas
             }
         }
 
-        private void fillRazaPicker()
-        {
-
-        }
-
         private void regresar_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
@@ -90,9 +86,9 @@ namespace PRY_LENG_PROG.Mascotas
             pet.name = nombre.Text;
             pet.species = (string)especie.SelectedItem;
             pet.breed = (string)raza.SelectedItem;           
-            if (fecha.Date != null) pet.birth_date = fecha.Date;
-            if (peso.Text != "") pet.weight = Convert.ToDouble(peso.Text);       
-            if (altura.Text != "") pet.height = Convert.ToDouble(altura.Text);
+            if (fecha.Date != null) pet.birth_date = preprocessDate(fecha.Date.ToShortDateString());
+            if (!String.IsNullOrEmpty(peso.Text)) pet.weight = Convert.ToDouble(peso.Text);       
+            if (!String.IsNullOrEmpty(altura.Text)) pet.height = Convert.ToDouble(altura.Text);
 
             var petClient = new RestClient(url);
             string rutaFeed = "/api/pets";
@@ -114,6 +110,14 @@ namespace PRY_LENG_PROG.Mascotas
             {
                 await DisplayAlert("error", err.Message, "aceptar");
             }
+        }
+
+        private string preprocessDate(string date)
+        {
+            string[] infoDate = date.Split('/');
+            string mes = infoDate[0].Length < 2 ? '0' + infoDate[0] : infoDate[0];
+            string dia = infoDate[1].Length < 2 ? '0' + infoDate[1] : infoDate[1];
+            return infoDate[2] + '-' + mes + '-' + dia;
         }
     }
 }

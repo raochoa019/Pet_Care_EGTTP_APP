@@ -35,5 +35,11 @@ namespace PRY_LENG_PROG.Mascotas
         {
             Navigation.PushAsync(new frmNewPet());
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Application.Current.Properties["regresoConsulta"] = false;
+        }
     }
 }

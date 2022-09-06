@@ -16,6 +16,7 @@ namespace PRY_LENG_PROG.components
     public partial class ListPets : ContentView
     {
         List<PetModel> pets = new List<PetModel>();
+        IEnumerable<PetModel> petsSource = new List<PetModel>();
         private int user_id;
 
         public ListPets(int user_id)
@@ -35,11 +36,13 @@ namespace PRY_LENG_PROG.components
             var queryResult = petClient.Execute(request);
             string strJson = queryResult.Content;
             pets = JsonConvert.DeserializeObject<List<PetModel>>(strJson);
+            petsSource = pets;
         }
 
         void ShowPets()
         {
-            foreach(var pet in pets)
+            PanelPets.Children.Clear();
+            foreach(var pet in petsSource)
             {
                 String defaultImage = "perro.jpg";
                 if (pet.species.Equals("Gato")) {
@@ -48,6 +51,12 @@ namespace PRY_LENG_PROG.components
 
                 PanelPets.Children.Add(new Pet(pet.id, pet.name, defaultImage));
             }
+        }
+
+        private void searchPet_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            petsSource = pets.Where(pet => pet.name.ToLower().StartsWith(e.NewTextValue.ToLower()));
+            ShowPets();
         }
     }
 }

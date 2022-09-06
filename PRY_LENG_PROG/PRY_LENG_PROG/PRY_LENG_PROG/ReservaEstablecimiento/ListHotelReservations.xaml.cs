@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -23,6 +24,8 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
         {
             InitializeComponent();
             header.Children.Add(new Header());
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
         }
 
         private void GetReservations()
@@ -33,28 +36,88 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
             var queryResult = petClient.Execute(request);
             string strJson = queryResult.Content;
             reservaciones = JsonConvert.DeserializeObject<List<ReservationWithPetInfo>>(strJson);
-            if (reservaciones != null)
+            Device.BeginInvokeOnMainThread(() =>
             {
-                listView.ItemsSource = reservaciones;
-            }
-            
+                if (reservaciones != null)
+                {
+                    listView.ItemsSource = reservaciones;
+                }
+                spinner.IsRunning = false;
+            });
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            GetReservations();
+            Application.Current.Properties["regresoActualizacionReservaHotel"] = false;
+            Application.Current.Properties["regresoReservaHotel"] = false;
+            spinner.IsRunning = true;
+            Thread hilo = new Thread(GetReservations);
+            hilo.Start();
+            
         }
 
-        private void listView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private async void listView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             ReservationWithPetInfo hotelSeleccionado = (ReservationWithPetInfo)e.ItemData;
-            DisplayAlert("Actualizar", hotelSeleccionado.nombre_hotel, "cerrar");
-            //Navigation.PushAsync(new PlaceDetails(hotelSeleccionado.nombreHotel, hotelSeleccionado.direccion, pet));
-        }
+            string action = await DisplayActionSheet("Seleccione un opcion", "Cancelar", null,"Actualizar", "Eliminar");
+            if (action.Equals("Actualizar"))
+            {
+                HotelReservation hotel = new HotelReservation();
+                hotel.nombre_hotel = hotelSeleccionado.nombre_hotel;
+                hotel.direction = hotelSeleccionado.direction;
+                hotel.pet_id = hotelSeleccionado.pet_id;
+                hotel.exercises = hotelSeleccionado.exercises;
+                hotel.feeding = hotelSeleccionado.feeding;
+                hotel.rides = hotelSeleccionado.rides;
+                hotel.special_cares = hotelSeleccionado.special_cares;
+                hotel.admission_day = hotelSeleccionado.admission_day;
+                hotel.day_of_exit = hotelSeleccionado.day_of_exit;
 
+                await Navigation.PushAsync(new PlaceDetails(hotel, true, hotelSeleccionado));
+            }
+            else
+            {
+                bool acept =  await DisplayAlert("Eliminar", "¿Esta seguro que desea eliminar esta reserva?", "Si", "No");
+                if (acept)
+                {
+                    DeleteReservation(hotelSeleccionado.id);
+                } 
+            }
+            
+        }
+        
         private void Return_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private async void DeleteReservation(int id)
+        {
+            var hotelClient = new RestClient((string)Application.Current.Properties["direccionDb"]);
+            string ruta = "/api/hotel/reservations/" + id;
+            var request = new RestRequest(ruta, Method.DELETE);
+            try
+            {
+                var response = hotelClient.Execute(request);
+
+                if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
+                {
+                    await DisplayAlert("msg", response.Content, "ok");
+                    
+                }
+                else
+                {
+                    await DisplayAlert("Alerta", response.Content, "ok");
+                    Thread lista = new Thread(GetReservations);
+                    lista.Start();
+                    listView.RefreshView();
+                }
+
+            }
+            catch (Exception err)
+            {
+                await DisplayAlert("error", err.Message, "aceptar");
+            }
         }
     }
 }

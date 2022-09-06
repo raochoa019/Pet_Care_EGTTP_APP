@@ -17,31 +17,37 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlaceDetails : ContentPage
     {
-        string name = "";
-        string direction = "";
+        HotelReservation hotel = new HotelReservation();
         int pet_id;
-        private Dictionary<string, string> detalles = new Dictionary<string, string>();
+        bool act = false;
 
-        public PlaceDetails(string nombre, string direccion, int pet)
+        public PlaceDetails(HotelReservation _hotel, bool actualizar, ReservationWithPetInfo res_pet = null)
         {
             InitializeComponent();
             header.Children.Add(new Header());
-            pet_id = pet;
-            name = nombre;
-            direction = direccion;
-            sitio.Text = nombre;
-            ubicacion.Text = direccion;
-            PetInfo();
+            NavigationPage.SetHasNavigationBar(this, false);
+            MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
+            hotel = _hotel;
+            act = actualizar;
+            pet_id = hotel.pet_id;
+            sitio.Text = hotel.nombre_hotel;
+            ubicacion.Text = hotel.direction;
+            if (!actualizar)
+            {
+                PetInfo();
+            }
+            else
+            {
+                nombre.Text = res_pet.name;
+                especie.Text = res_pet.species;
+                raza.Text = res_pet.breed;
+                Application.Current.Properties["id_reservacion"] = res_pet.id;
+            }
         }
 
         private void Siguiente_Clicked(object sender, EventArgs e)
         {
-            HotelReservation lugar = new HotelReservation();
-            lugar.pet_id = pet_id;
-            lugar.nombre_hotel = name;
-            lugar.direction = direction;
-
-            Navigation.PushAsync(new ExtraDetails(lugar));
+            Navigation.PushAsync(new ExtraDetails(hotel,act));
         }
 
         private void Return_Clicked(object sender, EventArgs e)
@@ -61,6 +67,18 @@ namespace PRY_LENG_PROG.ReservaEstablecimiento
                 nombre.Text = pet.name;
                 especie.Text = pet.species;
                 raza.Text = pet.breed;
+            }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            returnConsulta();
+        }
+        private async void returnConsulta()
+        {
+            if ((bool)Application.Current.Properties["regresoReservaHotel"] || (bool) Application.Current.Properties["regresoActualizacionReservaHotel"])
+            {
+                await Navigation.PopAsync();
             }
         }
     }

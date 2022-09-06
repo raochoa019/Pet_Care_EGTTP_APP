@@ -10,12 +10,15 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0" x:Name="header"></StackLayout>
                 <Label Grid.Row="1" Margin="0,10,0,10" Text="Reservaciones" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Title" FontAttributes="Bold"/>
-                <syncfusion:SfListView Grid.Row="2" x:Name="listView" 
+                <Label Grid.Row="2" Margin="0,10,0,10" Text="*Pulse para ver las opciones de la reserva" HorizontalTextAlignment="Center" TextColor="Black" FontSize="13" FontAttributes="Bold"/>
+                <ActivityIndicator x:Name="spinner" Color="#E73522" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3" Scale="2"/>
+                <syncfusion:SfListView Grid.Row="3" x:Name="listView" 
                                        ItemsSource="{Binding reservaciones}" 
                                        ItemSize="170"
                                        ItemTapped="listView_ItemTapped">
@@ -53,8 +56,8 @@
                     </syncfusion:SfListView.ItemTemplate>
 
                 </syncfusion:SfListView>
-                <StackLayout Grid.Row="3" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                    <Button Clicked="Return_Clicked" x:Name="Return"  CornerRadius="10" BackgroundColor="#CB1515" Text="Regresar"/>
+                <StackLayout Grid.Row="4" HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Margin="10">
+                    <Button Clicked="Return_Clicked" x:Name="Return"  CornerRadius="25" BackgroundColor="#E73522" TextColor="White" Text="Regresar"/>
                 </StackLayout>
             </Grid>
         </StackLayout>
