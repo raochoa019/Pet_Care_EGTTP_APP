@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PRY_LENG_PROG.Modelos
 {
-    internal class PetModel
+    public class PetModel
     {
         public int id { get; set; }
         public string name { get; set; }

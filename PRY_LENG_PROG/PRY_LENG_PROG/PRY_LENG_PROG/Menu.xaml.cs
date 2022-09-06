@@ -19,6 +19,7 @@ namespace PRY_LENG_PROG
     {
         UserModel userAccount = new UserModel();
         string userRol;
+
         public Menu(UserModel usuario)
         {
             this.userAccount = usuario;

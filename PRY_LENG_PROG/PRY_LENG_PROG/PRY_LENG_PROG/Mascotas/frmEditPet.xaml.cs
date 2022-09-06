@@ -112,7 +112,7 @@ namespace PRY_LENG_PROG.Mascotas
                 else
                 {
                     await DisplayAlert("Mascota " + pet.name, "Campos actualizados exitosamente", "ok");
-                    await Navigation.PushAsync(new frmPets(user_id));
+                    await Navigation.PopAsync();
                 }
             }
             catch (Exception err)

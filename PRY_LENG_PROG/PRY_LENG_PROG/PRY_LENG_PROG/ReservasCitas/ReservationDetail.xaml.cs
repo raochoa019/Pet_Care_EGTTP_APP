@@ -18,9 +18,6 @@ namespace PRY_LENG_PROG.ReservasCitas
     {
         ReservationDoctorModel reservation_user;
         ReservationUserModel reservation_doctor;
-        PetModel pet;
-        UserModel vet;
-        UserModel client;
 
         string url = (string)Application.Current.Properties["direccionDb"];
         string userRol = (string)Application.Current.Properties["userRol"];

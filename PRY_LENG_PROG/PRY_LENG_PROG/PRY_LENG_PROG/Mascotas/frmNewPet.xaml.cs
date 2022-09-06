@@ -116,7 +116,7 @@ namespace PRY_LENG_PROG.Mascotas
                 else
                 {
                     await DisplayAlert("Registro", "Mascota registrada exitosamente", "ok");
-                    await Navigation.PushAsync(new frmPets(user_id));
+                    await Navigation.PopAsync();
                 }
             }
             catch (Exception err)

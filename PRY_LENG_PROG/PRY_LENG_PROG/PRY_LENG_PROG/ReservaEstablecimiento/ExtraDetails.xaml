@@ -28,7 +28,7 @@
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="FillAndExpand">
-                        <Label Margin="25,0,25,0" VerticalTextAlignment="Center" Text="Alimentacion" TextColor="Black" />
+                        <Label Margin="25,0,25,0" VerticalTextAlignment="Center" Text="Alimentación" TextColor="Black" />
                         <Editor Margin="20,0,20,0" x:Name="alimentacion"/>
                     </StackLayout>
 
