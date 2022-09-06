@@ -11,15 +11,15 @@ _Aplicación para veterinarias y estadía de mascotas donde existe el registro d
 ### Frontend 👨‍💻
 _Para empezar, instale Visual Studio y seleccione la opción "Desarrollo para dispositivos móviles con .NET" en el programa de instalación._
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Proyecto_LP/testIntegration/recursos/requerimiento_frontend.png)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/prueba-readme/main/recursos/requerimiento_frontend.png)
 
 _Proceda a clonar el proyecto, luego de eso podrá observar los siguientes archivos accediendo a la carpeta "Proyecto\_LP/PRY\_LENG\_PROG"_
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Proyecto_LP/testIntegration/recursos/solucionVisualStudio.JPG)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/prueba-readme/main/recursos/solucionVisualStudio.JPG)
 
 _Una vez abierta la solución podrá visualizar el entorno de desarrollo de la siguiente manera_
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Proyecto_LP/testIntegration/recursos/VisualStudio.JPG)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/prueba-readme/main/recursos/VisualStudio.JPG)
 
 _Para la visualización del aplicativo será necesario ciertas configuraciones._
 * **Activar el modo desarrollador.**
@@ -31,27 +31,27 @@ _Otra forma de probar el aplicativo es mediante un emulador que puede ser instal
 _Dado que el proyecto se encuentra trabajando con Apis locales donde se conecta para realizar las debidas peticiones. Es necesario ejecutar el comando desde el simbolo del sistema de Adb de Android_
 _Opcion que encontrará cómo lo ve en la imagen_
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Proyecto_LP/testIntegration/recursos/adbConsole.png)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/prueba-readme/main/recursos/adbConsole.png)
 
 _En la consola deberá ejecutar el comando para que pueda realizar la conexión local con las peticiones para la visualización de los datos en la aplicación._
 ```
-adb reverse tcp:800 tcp:8000
+adb reverse tcp:8000 tcp:8000
 ```
 
 _Una vez aplicado todo lo mencionado anteriormente, en la sección superior podrá visualizar la siguiente opción que le permitirá ejecutar el aplicativo ya sea desde su dispositivo móvil o emulador_
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Proyecto_LP/testIntegration/recursos/compilarProyecto.png)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/prueba-readme/main/recursos/compilarProyecto.png)
 
 ### Base de datos: MySQL Workbench 🗄
 _Se está utilizando la herramienta visual de diseño de bases de datos MySQL Workbench para el almaecenamiento y consulta de información_
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Proyecto_LP/testIntegration/recursos/database.JPG)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/prueba-readme/main/recursos/database.JPG)
 
 ### Backend 🗄️⚙️
 _Para empezar debe asegurarse que su máquina local tenga PHP y Composer instalados._
 _Una vez instalado los requerimientos anteriores podrá visualizar los archivos de la siguiente manera_
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Proyecto_LP/testIntegration/recursos/backend.JPG)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/prueba-readme/main/recursos/backend.JPG)
 
 _Existen migraciones que se han realizado, para ejecutarlas y carga la información es necesario la ejecución del siguiente comando_
 ```
@@ -60,7 +60,7 @@ php artisan migrate:fresh --seed
 
 _Dicho comando procederá a migrar la información a nuestra base de datos mencionada anteriormente cómo se ve en la imagen_
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Proyecto_LP/testIntegration/recursos/migraciones.JPG)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/prueba-readme/main/recursos/migraciones.JPG)
 
 _Finalmente para el levantamiento de los servicios desde el backend es necesario la ejecución del siguiente comando_
 
