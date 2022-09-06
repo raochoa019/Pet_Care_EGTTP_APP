@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
-             x:Class="PRY_LENG_PROG.ReservasCitas.ChooseVet">
-  <ContentPage.Content>
-        <Grid Padding="20, 0">
+             x:Class="PRY_LENG_PROG.ReservasCitas.HistoricalReservation">
+    <ContentPage.Content>
+        <Grid Padding="20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -13,26 +13,16 @@
             </Grid.RowDefinitions>
 
             <StackLayout x:Name="header" Grid.Row="0"></StackLayout>
-            
             <StackLayout Grid.Row="1">
-                <Label 
-                    TextColor="Black" 
-                    FontAttributes="Bold" 
-                    FontSize="Title" 
-                    Text="Veterinarios"
-                    HorizontalTextAlignment="Start">
-                </Label>
+                <Label Text="Historial"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       TextColor="Black"></Label>    
             </StackLayout>
-
-            <!--<ScrollView Grid.Row="2">
-                <StackLayout x:Name="vets">
-
-                </StackLayout>
-            </ScrollView>-->
 
             <StackLayout Grid.Row="2">
                 <syncfusion:SfListView x:Name="listView" 
-                                       ItemsSource="{Binding listVets}"
+                                       ItemsSource="{Binding reservations}"
                                        ItemSize="170"
                                        ItemTapped="listView_ItemTapped">
 
@@ -46,7 +36,7 @@
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Column="0">
-                                        <Image Source="veterinario.gif" 
+                                        <Image Source="citaMedica.png" 
                                                WidthRequest="70" 
                                                HorizontalOptions="CenterAndExpand"></Image>
                                     </StackLayout>
@@ -55,20 +45,31 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"></RowDefinition>
                                                 <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Text="{Binding name}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" 
+                                            <Label Text="Doctor" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" 
                                                    Grid.Row="0" Grid.Column="0"></Label>
-                                            <Label Text="{Binding email}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"
+                                            <Label Text="Fecha" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"
                                                    Grid.Row="1" Grid.Column="0"></Label>
+                                            <Label Text="Estado" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"
+                                                   Grid.Row="2" Grid.Column="0"></Label>
+
+                                            <Label Text="{Binding doctor_name}" TextColor="Black" FontSize="Small" 
+                                                   Grid.Row="0" Grid.Column="1"></Label>
+                                            <Label Text="{Binding date}" TextColor="Black" FontSize="Small" 
+                                                   Grid.Row="1" Grid.Column="1"></Label>
+                                            <Label Text="{Binding status}" TextColor="Black" FontSize="Small" 
+                                                   Grid.Row="2" Grid.Column="1"></Label>
 
                                         </Grid>
-
+                                        
                                     </StackLayout>
-
+                                    
 
                                 </Grid>
                             </Frame>
@@ -78,9 +79,12 @@
                 </syncfusion:SfListView>
             </StackLayout>
 
+            <ActivityIndicator x:Name="spinner" Color="#E73522"  HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" Scale="2"/>
+
             <StackLayout Margin="0,20,0,40" Grid.Row="3" Spacing="50" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
                 <Button x:Name="regresar" Clicked="regresar_Clicked" Text="Regresar" CornerRadius="25" BackgroundColor="#E73522" TextColor="White"/>
             </StackLayout>
+            
         </Grid>
-  </ContentPage.Content>
+    </ContentPage.Content>
 </ContentPage>

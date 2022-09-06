@@ -52,8 +52,8 @@ namespace PRY_LENG_PROG.ReservasCitas
             datePicker.MaximumDate = date.AddDays(30);
 
             timePicker.ItemsSource = new int[]{ 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+            SetTimePicker(datePicker.Date);
 
-            
 
         }
 
@@ -159,7 +159,7 @@ namespace PRY_LENG_PROG.ReservasCitas
             reservations = JsonConvert.DeserializeObject<List<ReservationModel>>(strJson);
         }
 
-        List<int> GetTimesAllowed(DateTime date) {
+        void SetTimePicker(DateTime date) {
             List<int> times = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
 
             foreach (ReservationModel res in reservations) {
@@ -170,14 +170,17 @@ namespace PRY_LENG_PROG.ReservasCitas
                 }
                 
             }
+            if (timePicker.ItemsSource.Count > 0) {
+                timePicker.ItemsSource.Clear();
+            }
+            
+            timePicker.ItemsSource = times;
 
-            return times;
         }
 
         void DateSelected(object sender, FocusEventArgs e) {
             Console.WriteLine(datePicker.Date.ToString());
-            timePicker.ItemsSource.Clear();
-            timePicker.ItemsSource = GetTimesAllowed(datePicker.Date);
+            SetTimePicker(datePicker.Date);
         }
     }
 }

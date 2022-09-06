@@ -18,8 +18,10 @@ namespace PRY_LENG_PROG.ReservasCitas
     {
         string url = (string)Application.Current.Properties["direccionDb"];
         List<UserModel> listVets = new List<UserModel>();
+        int pet_id;
         public ChooseVet(int id_pet)
         {
+            pet_id = id_pet;
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             MessagingCenter.Send<Object>(this, "HideOsNavigationBar");
@@ -28,7 +30,7 @@ namespace PRY_LENG_PROG.ReservasCitas
             GetVets();
             // List<StackLayout> list = new List<StackLayout>();
 
-            foreach (UserModel vet in listVets) {
+            /*foreach (UserModel vet in listVets) {
                 StackLayout sl = new StackLayout { Padding = new Thickness(0,20) };
                 // Event tap
                 var tapEvent = new TapGestureRecognizer();
@@ -77,7 +79,7 @@ namespace PRY_LENG_PROG.ReservasCitas
                 sl.Children.Add(gridColumn);
 
                 vets.Children.Add(sl);
-            }
+            }*/
 
         }
 
@@ -88,12 +90,19 @@ namespace PRY_LENG_PROG.ReservasCitas
             var queryResult = vetsClient.Execute(request);
             string strJason = queryResult.Content;
             listVets = JsonConvert.DeserializeObject<List<UserModel>>(strJason);
+            listView.ItemsSource = listVets;
             // Console.WriteLine(listVets);
         }
 
         void regresar_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void listView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            UserModel vet = (UserModel)e.ItemData;
+            Navigation.PushAsync(new CreateReservation(vet.id, pet_id));
         }
 
     }
