@@ -26,7 +26,7 @@ _Otra forma de probar el aplicativo es mediante un emulador que puede ser instal
 _Dado que el proyecto se encuentra trabajando con Apis locales donde se conecta para realizar las debidas peticiones. Es necesario ejecutar el comando desde el simbolo del sistema de Adb de Android_
 _Opcion que encontrará cómo lo ve en la imagen_
 
-![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Pet_Care_EGTTP_APP/main/recursos/adConsole.png)
+![requerimiento frontend](https://raw.githubusercontent.com/raochoa019/Pet_Care_EGTTP_APP/main/recursos/adbConsole.png)
 
 _En la consola deberá ejecutar el comando para que pueda realizar la conexión local con las peticiones para la visualización de los datos en la aplicación._
 ```
